@@ -1,0 +1,7 @@
+# ignore MacOs system files
+.DS_store
+# ignore Windows system files
+.Thumbs.db
+# ignore txt files
+*.txt
+*.rtf
