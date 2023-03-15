@@ -22,8 +22,18 @@
   --font-family-heading: "Abril Fatface", serif;
   --font-family-body: "Montserrat", sans-serif;
   --font-family-signature: "Cherish", cursive;
+
+  --font-size-body: 1rem;
+  --font-size-nav-link: 1rem;
+  --font-size-h1: 2rem;
+  --font-size-h2: 1.5rem;
+  --font-size-h3: 1.5rem;
+  --font-size-signature: 2rem;
+  --font-size-body-small: 0.875rem;
+
   --font-weight-bold: 700;
   --font-weight-medium: 500;
+
   --letter-spacing: 0.05em;
   --line-height: 1.5;
 
@@ -57,7 +67,6 @@
 a {
   /* properly apply padding & margin */
   display: inline-block;
-  text-decoration: none;
 }
 
 img {
@@ -79,8 +88,11 @@ html {
 body {
   min-height: 100vh;
 
+  background-color: var(--color-secondary);
+
   color: var(--color-primary);
   font-family: var(--font-family-body);
+  font-size: var(--font-size-body);
   line-height: var(--font-line-height);
 }
 
@@ -92,26 +104,38 @@ h2 {
 
 h1 {
   color: var(--color-secondary);
-  font-size: 2rem;
+  font-size: var(--font-size-h1);
   letter-spacing: var(--letter-spacing);
 }
 
-h2,
-h3 {
-  font-size: 1.5rem;
+h2 {
+  font-size: var(--font-size-h2);
 }
 
 h3 {
   font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-h3);
+}
+
+/* applies to both visited an unvisited link */
+a:any-link {
+  color: var(--color-primary);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+  font-weight: var(--font-weight-bold);
+  text-decoration: underline;
+}
+
+a:active {
+  color: var(--color-accent);
 }
 
 p.small {
   font-size: 0.875rem;
-}
-
-p.signature {
-  font-family: var(--font-family-signature);
-  font-size: 2rem;
 }
 
 /* ______________________________________________________________________ *\
@@ -124,12 +148,45 @@ p.signature {
   border-radius: var(--border-radius);
 }
 
-/* ---------- HEADER ---------- */
-.main-nav {
+.signature {
+  cursor: default;
+  font-family: var(--font-family-signature);
+  font-size: var(--font-size-signature);
 }
 
-.mobile-menu {
+/* ---------- HEADER ---------- */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background-color: var(--color-secondary);
 }
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: calc(2 * var(--padding)) calc(4 * var(--padding));
+}
+
+.nav--brand-identity {
+  display: flex;
+  align-items: center;
+  gap: calc(4 * var(--padding));
+}
+
+.nav--list,
+.nav--signature {
+  display: none;
+}
+
+.nav--mobile-menu {
+  cursor: pointer;
+}
+
+/* .mobile-menu {
+} */
 
 /* ---------- HERO ---------- */
 .hero {
@@ -154,7 +211,83 @@ p.signature {
   gap: clamp(calc(var(--gap) / 4), 0.1vw, calc(var(--gap) * 2));
 }
 
+.mosaique img {
+  position: relative;
+  filter: grayscale(0);
+  object-fit: cover;
+  border-radius: calc(var(--border-radius) * 1.8);
+  border: var(--border-radius) solid transparent;
+}
+/* ---------- SERVICES ---------- */
+.services {
+}
+
+/* ---------- CONTACT ---------- */
+.contact {
+}
+
+/* ---------- FOOTER ---------- */
+
+/* ______________________________________________________________________ *\
+    $STATE
+    Reserved for JavaScript classes
+\* ______________________________________________________________________ */
+
+/* ______________________________________________________________________ *\
+    $THEME
+\* ______________________________________________________________________ */
+.theme-dark {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+}
+
+/* ______________________________________________________________________ *\
+    $MEDIA QUERIES (mobile first)
+\* ______________________________________________________________________ */
 @media screen and (min-width: 992px) {
+  /* GLOBALS */
+  :root {
+    --font-size-body: 1.25rem;
+    --font-size-h1: 5rem;
+    --font-size-h2: 4rem;
+    --font-size-h3: 3rem;
+    --font-size-signature: 3rem;
+    --font-size-body-small: 1rem;
+  }
+
+  /* ---------- UTILITIES ---------- */
+
+  /* ---------- HEADER ---------- */
+  .nav--brand-identity {
+    display: flex;
+    align-items: center;
+    gap: calc(4 * var(--padding));
+  }
+
+  .nav--signature {
+    display: block;
+  }
+
+  .nav--list {
+    display: flex;
+    align-items: center;
+    gap: calc(2 * var(--padding));
+
+    list-style: none;
+  }
+
+  .nav--item {
+    padding: calc(2 * var(--padding)) calc(4 * var(--padding));
+  }
+
+  .nav--mobile-menu {
+    display: none;
+  }
+  /* ---------- HERO ---------- */
+
+  /* ---------- ABOUT ---------- */
+
+  /* ---------- PORTFOLIO ---------- */
   .mosaique {
     height: 100vh;
     display: grid;
@@ -165,6 +298,18 @@ p.signature {
     padding-top: calc(var(--padding) * 10);
     padding-bottom: calc(var(--padding) * 10);
   }
+
+  .mosaique img {
+    height: 100%;
+    border-radius: calc(var(--border-radius) * 5);
+  }
+
+  .mosaique img:hover {
+    filter: grayscale(1);
+    cursor: url(assets/icon/cursorPhoto.png), auto;
+    border: calc(var(--border-width) * 3) solid var(--color-shadow);
+  }
+
   .img1 {
     grid-column-start: 1;
     grid-column-end: 3;
@@ -224,52 +369,10 @@ p.signature {
     grid-row-start: 5;
     grid-row-end: 7;
   }
-}
-.mosaique img {
-  position: relative;
-  filter: grayscale(0);
-  object-fit: cover;
-  border-radius: calc(var(--border-radius) * 1.8);
-  border: var(--border-radius) solid transparent;
-}
-@media screen and (min-width: 992px) {
-  .mosaique img {
-    height: 100%;
-    border-radius: calc(var(--border-radius) * 5);
-  }
-  .mosaique img:hover {
-    filter: grayscale(1);
-    cursor: url(assets/icon/cursorPhoto.png), auto;
-    border: calc(var(--border-width) * 3) solid var(--color-shadow);
-    /*box-shadow: 10px 5px 5px var(--color-shadow);*/
-    /*transform: scale(1.1);*/
-  }
-}
-/* ---------- SERVICES ---------- */
-.services {
-}
 
-/* ---------- CONTACT ---------- */
-.contact {
-}
+  /* ---------- SERVICES ---------- */
 
-/* ---------- FOOTER ---------- */
+  /* ---------- CONTACT ---------- */
 
-/* ______________________________________________________________________ *\
-    $STATE
-    Reserved for JavaScript classes
-\* ______________________________________________________________________ */
-
-/* ______________________________________________________________________ *\
-    $THEME
-\* ______________________________________________________________________ */
-.theme-dark {
-  background-color: var(--color-primary);
-  color: var(--color-secondary);
-}
-
-/* ______________________________________________________________________ *\
-    $MEDIA QUERIES (mobile first)
-\* ______________________________________________________________________ */
-@media screen and (min-width: 992px) {
+  /* ---------- FOOTER ---------- */
 }
