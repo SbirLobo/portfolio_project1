@@ -17,23 +17,45 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/x-icon" href="./assets/favicon/logo.svg" />
   </head>
-  
-  <body">
-  <header>
-    <nav class="main-nav"></nav>
-    <nav class="mobile-menu"></nav>
-  </header>
-  
-  <main>
-    <section class="hero"></section>
-    <section class="about"></section>
-    <section class="portfolio theme-dark"></section>
-    <section class="services"></section>
-    <section class="contact theme-dark"></section>
-  </main>
-  
-  <footer></footer>
-  
-  <script src="script.js"></script>
+
+  <body>
+    <header>
+      <nav class="nav">
+        <div class="nav--brand-identity">
+          <a href="./index.html"
+            ><img
+              src="assets/logo/logo-primary.svg"
+              alt="logo Oliver Boyd Photography"
+              width="40px"
+          /></a>
+          <span class="nav--signature signature">Oliver Boyd</span>
+        </div>
+        <ul class="nav--list">
+          <li class="nav--item"><a href="#about">About Me</a></li>
+          <li class="nav--item"><a href="#portfolio">Portfolio</a></li>
+          <li class="nav--item"><a href="#services">Services</a></li>
+          <li class="nav--item"><a href="#contact">Contact</a></li>
+        </ul>
+        <img
+          class="nav--mobile-menu"
+          src="assets/icon/mobile/menu-hamburger-primary.svg"
+          alt="hamburger menu"
+          width="24px"
+        />
+      </nav>
+      <!-- <nav class="mobile-menu"></nav> -->
+    </header>
+
+    <main>
+      <section class="hero" id="hero"></section>
+      <section class="about" id="about"></section>
+      <section class="portfolio theme-dark" id="portfolio"></section>
+      <section class="services" id="services"></section>
+      <section class="contact theme-dark" id="contact"></section>
+    </main>
+
+    <footer></footer>
+
+    <script src="script.js"></script>
   </body>
 </html>
