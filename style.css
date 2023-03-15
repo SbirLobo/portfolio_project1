@@ -122,6 +122,14 @@ p.signature {
   padding: var(--padding) calc(2 * var(--padding));
   border-width: var(--border-width);
   border-radius: var(--border-radius);
+  display: flex;
+  gap: var(--gap);
+  align-items: center;
+  font-weight: var(--font-weight-bold);
+}
+
+.icon_hover {
+  display: none;
 }
 
 /* ---------- HEADER ---------- */
@@ -149,9 +157,70 @@ p.signature {
 
 /* ---------- CONTACT ---------- */
 .contact {
+  background-color: var(--color-primary);
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
 }
 
+.contact, footer, .logoNom, .sectionMap {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.sectionMap {
+  background-color: var(--color-secondary);
+  flex-direction: column;
+  width: 65%;
+  border-radius: var(--border-radius);
+  padding: calc(2 * var(--padding));
+  transform : rotate(-10deg);
+  gap: var(--gap);
+}
+
+.sectionMap p {
+  color: var(--color-primary);
+  text-align: center;
+}
+
+.sectionMap p:nth-child(3), .sectionMap p:nth-child(4) {
+  font-weight: var(--font-weight-bold);
+}
+
+
 /* ---------- FOOTER ---------- */
+footer {
+  flex-direction: column;
+}
+
+.logoSociaux{
+  display: flex;
+  justify-content: space-evenly;
+  padding: var(--padding);
+}
+
+.logoNom {
+  justify-content: space-evenly;
+  padding: var(--padding);
+}
+
+.sectionFooter {
+  margin: var(--margin);
+  width: 100%;
+  display: flex;
+  text-align: center;
+  gap: calc(2 * var(--gap));
+  flex-direction: column;
+}
+
+.copyrightFooter {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  width: 100%;
+  text-align: center;
+  padding: var(--padding);
+}
 
 /* ______________________________________________________________________ *\
     $STATE
@@ -166,8 +235,41 @@ p.signature {
   color: var(--color-secondary);
 }
 
+.btn-secondary {
+  background-color: var(--color-primary);
+  border: var(--border-width) solid var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
+
+.btn-secondary:hover .icon_hover {
+  display: block;
+}
+
+.btn-secondary:hover .icon_default {
+  display: none;
+  
+}
 /* ______________________________________________________________________ *\
     $MEDIA QUERIES (mobile first)
 \* ______________________________________________________________________ */
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 992px) {
+
+  
+  .logoSociaux img {
+    height: 64px;
+  }
+  
+  .logoNom img {
+    height: 120px;
+  }
+  
+  .signature {
+    font-size: ;
+  }
+
 }
