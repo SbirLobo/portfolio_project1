@@ -258,8 +258,6 @@ footer {
     $MEDIA QUERIES (mobile first)
 \* ______________________________________________________________________ */
 @media screen and (min-width: 992px) {
-
-  
   .logoSociaux img {
     height: 64px;
   }
@@ -268,8 +266,25 @@ footer {
     height: 120px;
   }
   
-  .signature {
-    font-size: ;
+  p.signature {
+    font-size: 3rem;
   }
 
+  .contact {
+    height: 60vh;
+  }
+
+  footer {
+    height: 40vh;
+  }
+
+  .sectionFooter{
+    flex-grow: 1;
+    justify-content: center;
+    gap: var(--gap);
+  }
+
+  .copyrightFooter {
+    padding: calc(4 * var(--padding));
+  }
 }
