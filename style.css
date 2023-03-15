@@ -141,8 +141,103 @@ p.signature {
 
 /* ---------- PORTFOLIO ---------- */
 .porfolio {
+  height: 100vh;
+  width: 100vw;
 }
 
+.mosaique {
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(calc(var(--gap) / 4), 0.1vw, calc(var(--gap) * 2));
+}
+
+@media screen and (min-width: 992px) {
+  .mosaique {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.4fr 1.15fr;
+    grid-template-rows: 25% 8% 17% 17% 8% 25%;
+  }
+  .img1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+  .img2 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 6;
+  }
+  .img3 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 6;
+    grid-row-end: 7;
+  }
+  .img4 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 6;
+    grid-row-end: 7;
+  }
+  .img5 {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 4;
+  }
+  .img6 {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 4;
+    grid-row-end: 7;
+  }
+  .img7 {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+  .img8 {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 3;
+    grid-row-end: 5;
+  }
+  .img9 {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 5;
+    grid-row-end: 7;
+  }
+}
+.mosaique img {
+  filter: grayscale(0);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 5px solid transparent;
+}
+@media screen and (min-width: 992px) {
+  .mosaique img {
+    border-radius: 50px;
+  }
+  .mosaique img:hover {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(1);
+    cursor: url(assets/icon/cursorPhoto.png), auto;
+    border: 5px solid #d9d9d9;
+    /*box-shadow: 10px 5px 5px #d9d9d9;*/
+    /*transform: scale(1.1);*/
+  }
+}
 /* ---------- SERVICES ---------- */
 .services {
 }
@@ -169,5 +264,5 @@ p.signature {
 /* ______________________________________________________________________ *\
     $MEDIA QUERIES (mobile first)
 \* ______________________________________________________________________ */
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 992px) {
 }
