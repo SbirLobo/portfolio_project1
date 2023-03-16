@@ -5,3 +5,5 @@
 # ignore txt files
 *.txt
 *.rtf
+#ignore npm packages and all related dependencies
+node_modules
