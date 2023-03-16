@@ -39,7 +39,8 @@
   --color-primary: #353535;
   --color-secondary: #f5f5f5;
   --color-accent: #3c6e71;
-  --color-shadow: #d9d9d9;
+  --color-shadow: hsla(0, 0%, 21%, 0.7);
+  --color-white: #fff;
 
   /* BORDERS */
   --border-radius: 8px;
@@ -116,6 +117,11 @@ h3 {
   font-size: var(--font-size-h3);
 }
 
+section:not(.hero),
+.footer {
+  padding: calc(4 * var(--padding));
+}
+
 /* applies to both visited an unvisited link */
 a:any-link {
   cursor: pointer;
@@ -136,18 +142,21 @@ a:active {
   color: var(--color-accent);
 }
 
-p.small {
-  font-size: 0.875rem;
-}
-
 /* ______________________________________________________________________ *\
-    $MODULE
+    $UTILITIES
 \* ______________________________________________________________________ */
-/* ---------- UTILITIES ---------- */
 .signature {
   cursor: default;
   font-family: var(--font-family-signature);
   font-size: var(--font-size-signature);
+}
+
+.small {
+  font-size: 0.875rem;
+}
+
+.strong {
+  font-weight: var(--font-weight-bold);
 }
 
 .btn {
@@ -160,17 +169,8 @@ p.small {
 
   border-width: var(--border-width);
   border-radius: var(--border-radius);
-  font-weight: var(--font-weight-bold);
-}
 
-.icon_hover_secondary {
-  display: none;
   font-weight: var(--font-weight-bold);
-}
-
-.btn-secondary {
-  color: var(--color-secondary);
-  border: var(--border-width) solid var(--color-secondary);
 }
 
 .icon--hover {
@@ -185,12 +185,9 @@ p.small {
   display: block;
 }
 
-.btn.btn-secondary:hover {
-  color: var(--color-primary);
-  background-color: var(--color-secondary);
-}
-
-/* ---------- HEADER ---------- */
+/* ______________________________________________________________________ *\
+    $HEADER
+\* ______________________________________________________________________ */
 header {
   /* position: sticky; */
   /* top: 0; */
@@ -224,7 +221,9 @@ header {
   cursor: pointer;
 }
 
-/* ---------- HERO ---------- */
+/* ______________________________________________________________________ *\
+    $HERO
+\* ______________________________________________________________________ */
 .hero {
   min-height: 100vh;
 
@@ -264,226 +263,187 @@ header {
   gap: calc(2 * var(--gap));
 }
 
-
-/* ---------- ABOUT ---------- */
-
+/* ______________________________________________________________________ *\
+    $ABOUT
+\* ______________________________________________________________________ */
 .about {
-  height: 100vh;
-  display : flex;
+  min-height: 100vh;
+
+  display: flex;
   align-items: center;
   justify-content: center;
-  gap: calc(var(--gap)*5);
 }
 
-.about h2 {
-  letter-spacing: var(--letter-spacing);
-}
 .about p {
-  width: 100%;
   text-align: center;
 }
 
-.about .photoProfil{
-  display : none;
+.about--picture {
+  display: none;
 }
 
-.about div {
+.about--description {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: calc(var(--gap)*2);
+  gap: calc(1.5 * var(--gap));
 }
 
-
-
-.icon_default_accent {
-  width: 6%;
-  height: 6%;
+/* ______________________________________________________________________ *\
+    $PORTFOLIO
+\* ______________________________________________________________________ */
+.portfolio {
+  min-height: 100vh;
 }
 
-.icon_hover_accent {
-  width: 6%;
-  height: 6%;
-  display: none;
-}
-
-
-  
-.thirdthButton {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: var(--gap);
-    font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 700;
-    background-color: var(--color-secondary);
-    border: var(--border-width) solid var(--color-accent);
-    color: #3c6e71;
-    padding: 8px 16px;
-    border-width: 2px;
-    border-radius: 8px;
-   
-  
-  }
-
-.thirdthButton:hover {
-  background-color: var(--color-accent);
-  color: var(--color-secondary);
-}
-.thirdthButton:hover .icon_default_accent{
-  display: none;
-}
-.thirdthButton:hover .icon_hover_accent{
-  display: block;
-}
-/* ---------- PORTFOLIO ---------- */
-.porfolio {
-  height: 100vh;
-}
-
-.mosaique {
-  padding-left: calc(var(--padding));
-  padding-right: calc(var(--padding));
-  padding-top: calc(var(--padding));
-  padding-bottom: calc(var(--padding));
+.portfolio--tiling {
   display: flex;
   flex-direction: column;
-  gap: clamp(calc(var(--gap) / 4), 0.1vw, calc(var(--gap) * 2));
+  gap: calc(2 * var(--gap));
+  /* gap: clamp(calc(var(--gap) / 4), 0.1vw, calc(var(--gap) * 2)); */
 }
 
-.mosaique img {
+.portfolio--tiling img {
   position: relative;
-  filter: grayscale(0);
+
+  /* border-radius: calc(var(--border-radius) * 1.8); */
+  border-radius: var(--border-radius);
+  /* border: var(--border-radius) solid transparent; */
+
   object-fit: cover;
-  border-radius: calc(var(--border-radius) * 1.8);
-  border: var(--border-radius) solid transparent;
+  filter: grayscale(0);
 }
 
-/* ---------- SERVICES ---------- */
-
+/* ______________________________________________________________________ *\
+    $SERVICES
+\* ______________________________________________________________________ */
 .services {
-  height: 100vh;
+  min-height: 100vh;
+
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(2, 50%);
+  grid-template-rows: repeat(2, 1fr);
+  /* gap: calc(2 * var(--gap)); */
+  gap: calc(4 * var(--gap));
 }
 
-.firstService, .secondService {
+.package {
   display: flex;
-  margin: 1rem 2rem;
+  align-items: flex-start;
+  gap: calc(0.875 * var(--gap));
 }
 
-/* --margin : 32px */
-
-.secondService {
-  flex-direction: row-reverse;
+.package > * {
+  flex: 1 1 0;
 }
 
-.firstService img {
-  width: auto;
-  object-fit: contain;
-}
-
-.firstService > * {
-  flex:1 1 0;
-}
-
-.secondService img {
-  width: auto;
-  object-fit: contain;
-}
-
-.secondService > * {
-  flex:1 1 0;
-}
-
-.firstServiceText, .secondServiceText {
-  padding: 0 calc(2 * var(--padding));
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.firstServiceText {
+.package:nth-child(1) {
   text-align: right;
 }
 
-.services p {
-  padding-bottom: var(--padding);
+.package:nth-child(2) {
+  flex-direction: row-reverse;
 }
 
-.services h3 {
-  padding-bottom: calc(2 * var(--padding));
+.package--picture {
+  height: 100%;
+  width: 50%;
+  object-fit: cover;
+  border-radius: var(--border-radius);
 }
 
-/* ---------- CONTACT ---------- */
-.contact {
-  background-color: var(--color-primary);
+.package:nth-child(1) .package--picture {
+  box-shadow: -5px 5px 15px var(--color-shadow);
+}
+
+.package:nth-child(2) .package--picture {
+  box-shadow: 5px 5px 15px var(--color-shadow);
+}
+
+.package--description {
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100vh;
+  gap: calc(0.875 * var(--gap));
 }
 
-.contact, footer, .logoNom, .sectionMap {
+/* ______________________________________________________________________ *\
+    $CONTACT
+\* ______________________________________________________________________ */
+.contact {
+  min-height: 100vh;
+
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(4 * var(--gap));
+
+  background-color: var(--color-primary);
+}
+
+.contact--card {
+  padding: calc(2 * var(--padding));
+
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  gap: var(--gap);
+
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+
+  color: var(--color-primary);
+  text-align: center;
+  transform: rotate(-10deg);
 }
 
-.sectionMap {
-  background-color: var(--color-secondary);
+.contact--info {
+  display: flex;
   flex-direction: column;
-  width: 65%;
-  border-radius: var(--border-radius);
-  padding: calc(2 * var(--padding));
-  transform : rotate(-10deg);
   gap: var(--gap);
 }
 
-.sectionMap p {
-  color: var(--color-primary);
-  text-align: center;
+.contact--info--desktop {
+  display: none;
 }
 
-.sectionMap p:nth-child(3), .sectionMap p:nth-child(4) {
-  font-weight: var(--font-weight-bold);
-}
-
-
-/* ---------- FOOTER ---------- */
-footer {
+/* ______________________________________________________________________ *\
+    $FOOTER
+\* ______________________________________________________________________ */
+.footer {
+  display: flex;
   flex-direction: column;
+  gap: calc(2 * var(--gap));
 }
 
-.logoSociaux{
+.footer--socials {
   display: flex;
   justify-content: space-evenly;
   padding: var(--padding);
+  list-style: none;
 }
 
-.logoNom {
-
-  padding: var(--padding);
-}
-
-.sectionFooter {
-  margin: var(--margin);
-  width: 100%;
+.footer--description {
   display: flex;
-  text-align: center;
-  gap: calc(2 * var(--gap));
   flex-direction: column;
+  gap: calc(2 * var(--gap));
+
+  text-align: center;
 }
 
-.copyrightFooter {
-  background-color: var(--color-primary);
-  color: var(--color-secondary);
-  width: 100%;
+.footer--brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(2 * var(--gap));
+}
+
+.footer--copyright {
+  padding: calc(2 * var(--padding));
   text-align: center;
-  padding: var(--padding);
 }
 
 /* ______________________________________________________________________ *\
@@ -500,9 +460,8 @@ footer {
 }
 
 .btn-secondary {
-  background-color: var(--color-primary);
-  border: var(--border-width) solid var(--color-secondary);
   color: var(--color-secondary);
+  border: var(--border-width) solid var(--color-secondary);
 }
 
 .btn-secondary:hover {
@@ -510,20 +469,23 @@ footer {
   color: var(--color-primary);
 }
 
-.btn-secondary:hover .icon_hover_secondary {
-  display: block;
+.btn-accent {
+  color: var(--color-accent);
+  border: var(--border-width) solid var(--color-accent);
 }
 
-.btn-secondary:hover .icon_default_secondary {
-  display: none;
+.btn-accent:hover {
+  background-color: var(--color-accent);
+  color: var(--color-secondary);
 }
 
 /* ______________________________________________________________________ *\
     $MEDIA QUERIES (mobile first)
 \* ______________________________________________________________________ */
 @media screen and (min-width: 992px) {
-  
-  /* ---------- GLOBALS ---------- */
+  /* ____________________________________________ *\
+    $GLOBALS
+  \* ____________________________________________ */
   :root {
     /* FONTS */
     --font-size-body: 1.25rem;
@@ -539,7 +501,17 @@ footer {
     --padding: 16px;
   }
 
-  /* ---------- UTILITIES ---------- */
+  /* ____________________________________________ *\
+    $BASE
+  \* ____________________________________________ */
+  section:not(.hero),
+  .footer {
+    padding: calc(11 * var(--padding));
+  }
+
+  /* ____________________________________________ *\
+    $UTILITIES
+  \* ____________________________________________ */
   .btn {
     padding-inline: calc(6 * var(--padding));
   }
@@ -550,7 +522,9 @@ footer {
     height: 20px;
   }
 
-  /* ---------- HEADER ---------- */
+  /* ____________________________________________ *\
+    $HEADER
+  \* ____________________________________________ */
   .nav {
     padding: calc(2 * var(--padding));
   }
@@ -579,7 +553,9 @@ footer {
     display: none;
   }
 
-  /* ---------- HERO ---------- */
+  /* ____________________________________________ *\
+    $HERO
+  \* ____________________________________________ */
   .hero {
     /* add extra top padding to account for the height of the fixed navbar */
     padding-top: calc(calc(8 * var(--padding)) + calc(4 * var(--padding)));
@@ -599,143 +575,128 @@ footer {
     gap: calc(4 * var(--gap));
   }
 
-  /* ---------- ABOUT ---------- */
+  /* ____________________________________________ *\
+    $ABOUT
+  \* ____________________________________________ */
+  .about {
+    gap: calc(4 * var(--gap));
+  }
 
-  
-    
-    .about .photoProfil{
-      
-      display: initial;
-      height: 350px;
-      width: 350px;
-      border-radius: 100%;
-      object-fit: cover;
-      
-      
-    }
-  
+  .about--picture {
+    height: 500px;
+    width: 500px;
+    display: block;
 
-  /* ---------- PORTFOLIO ---------- */
-  .mosaique {
-    height: 100vh;
+    border-radius: 100%;
+    object-fit: cover;
+  }
+
+  .about--description {
+    gap: calc(2 * var(--gap));
+  }
+
+  /* ____________________________________________ *\
+    $PORTFOLIO
+  \* ____________________________________________ */
+  .portfolio--tiling {
+    min-height: 100vh;
+
     display: grid;
     grid-template-columns: 1fr 1fr 1.4fr 1.15fr;
     grid-template-rows: 25% 8% 17% 17% 8% 25%;
-    padding-left: calc(var(--padding) * 20);
-    padding-right: calc(var(--padding) * 20);
-    padding-top: calc(var(--padding) * 10);
-    padding-bottom: calc(var(--padding) * 10);
+    gap: clamp(calc(var(--gap)), 0.1vw, calc(var(--gap) * 2));
   }
 
-  .mosaique img {
+  .portfolio--tiling img {
     height: 100%;
-    border-radius: calc(var(--border-radius) * 5);
+    /* border-radius: calc(var(--border-radius) * 5); */
   }
 
-  .mosaique img:hover {
-    filter: grayscale(1);
-    cursor: url(assets/icon/cursorPhoto.png), auto;
+  .portfolio--tiling img:hover {
     border: calc(var(--border-width) * 3) solid var(--color-shadow);
+    filter: grayscale(1);
+    cursor: url("assets/icon/cursorPhoto.png"), auto;
   }
 
   .img1 {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 2;
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
     object-position: 50% 25%;
   }
+
   .img2 {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 6;
+    grid-column: 1 / 3;
+    grid-row: 2 / 6;
   }
+
   .img3 {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 6;
-    grid-row-end: 7;
+    grid-column: 1 / 2;
+    grid-row: 6 / 7;
     object-position: 50% 30%;
   }
+
   .img4 {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 6;
-    grid-row-end: 7;
+    grid-column: 2 / 3;
+    grid-row: 6 / 7;
   }
+
   .img5 {
-    grid-column-start: 3;
-    grid-column-end: 4;
-    grid-row-start: 1;
-    grid-row-end: 4;
+    grid-column: 3 / 4;
+    grid-row: 1 / 4;
     object-position: 50% 80%;
   }
+
   .img6 {
-    grid-column-start: 3;
-    grid-column-end: 4;
-    grid-row-start: 4;
-    grid-row-end: 7;
+    grid-column: 3 / 4;
+    grid-row: 4 / 7;
     object-position: 40% 80%;
   }
+
   .img7 {
-    grid-column-start: 4;
-    grid-column-end: 5;
-    grid-row-start: 1;
-    grid-row-end: 3;
+    grid-column: 4 / 5;
+    grid-row: 1 / 3;
   }
+
   .img8 {
-    grid-column-start: 4;
-    grid-column-end: 5;
-    grid-row-start: 3;
-    grid-row-end: 5;
+    grid-column: 4 / 5;
+    grid-row: 3 / 5;
     object-position: 40% 80%;
   }
+
   .img9 {
-    grid-column-start: 4;
-    grid-column-end: 5;
-    grid-row-start: 5;
-    grid-row-end: 7;
+    grid-column: 4 / 5;
+    grid-row: 5 / 7;
   }
 
-  /* ---------- SERVICES ---------- */
-
-  .firstService, .secondService {
-    margin: 1rem 13rem;
-  }
-  
-  /* --margin : 32px */
-  
-  .firstServiceText, .secondServiceText {
-    padding: 0 calc(2 * var(--padding));
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .firstServiceText {
-    text-align: left;
+  /* ____________________________________________ *\
+    $SERVICES
+  \* ____________________________________________ */
+  .services {
+    gap: calc(3.3 * var(--gap));
   }
 
-  .secondServiceText {
-    text-align : right;
+  .package {
+    /* gap: calc(0.875 * var(--gap)); */
+    gap: calc(1 * var(--gap));
   }
-  
-  .services p {
-    padding-bottom: var(--padding);
-    font-size: 1.25rem;
+
+  .package--picture {
+    height: 100%;
+    width: 50%;
+    /* object-fit: contain; */
   }
-  /* 20px -> 1.25rem*/
-  
-  .services h3 {
-    padding-bottom: calc(2 * var(--padding));
-    font-size: 3rem;
-  } 
-  /* 48px -> 3rem*/
 
-  /* ---------- CONTACT ---------- */
+  .package--description {
+    gap: calc(2 * var(--gap));
+  }
 
-  /* ---------- FOOTER ---------- */
+  /* ____________________________________________ *\
+    $CONTACT
+  \* ____________________________________________ */
+
+  /* ____________________________________________ *\
+    $FOOTER
+  \* ____________________________________________ */
   .logoSociaux img {
     height: 64px;
   }
@@ -744,7 +705,7 @@ footer {
     justify-content: center;
     gap: calc(15 * var(--gap));
   }
-  
+
   .logoNom img {
     height: 120px;
   }
@@ -753,15 +714,15 @@ footer {
     justify-content: center;
     gap: calc(13 * var(--gap));
   }
-  
+
   p.signature {
     font-size: 3rem;
   }
 
-  .sectionFooter{
+  .sectionFooter {
     flex-grow: 1;
     justify-content: center;
-    gap: calc( 3 * var(--gap));
+    gap: calc(3 * var(--gap));
   }
 
   .copyrightFooter {

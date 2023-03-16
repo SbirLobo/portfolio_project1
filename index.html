@@ -94,14 +94,14 @@
             My Work
             <img
               src="assets/icon/cta/arrow-right-secondary.svg"
-              alt="right arrow"
+              alt="button icon right arrow"
               width="17"
               height="10"
               class="icon--default"
             />
             <img
               src="assets/icon/cta/arrow-right-primary.svg"
-              alt="right arrow"
+              alt="button icon right arrow"
               width="17"
               height="10"
               class="icon--hover"
@@ -112,40 +112,43 @@
 
       <section class="about" id="about">
         <img
-          class="photoProfil"
           src="assets/img/desktop/picture-profile_2440x300.jpg"
-          width="2440px"
-          alt="Photo de Profil"
+          alt="oliver boyd picture profile"
+          width="2440"
+          height="300"
+          class="about--picture"
         />
-        <div>
+        <div class="about--description">
           <h2>Hey, I'm Oliver.</h2>
           <p>
             I am a street art and event <br />
             photographer based in Brooklyn <br />
             NYC. I put my passion for visual <br />
             storytelling to the service of the <br />
-            people across unique urban places
+            people in unique urban places
           </p>
-          <button class="thirdthButton">
+          <a class="btn btn-accent" href="#contact">
             Contact Me
             <img
-              class="icon_default_accent"
               src="assets/icon/cta/arrow-right-accent.svg"
-              alt="bouton flèche droite"
-              height="10px"
+              alt="button icon right arrow"
+              width="17"
+              height="10"
+              class="icon--default"
             />
             <img
-              class="icon_hover_accent"
               src="assets/icon/cta/arrow-right-secondary.svg"
-              alt="bouton flèche droite"
-              height="10px"
+              alt="button icon right arrow"
+              width="17"
+              height="10"
+              class="icon--hover"
             />
-          </button>
+          </a>
         </div>
       </section>
 
       <section class="portfolio theme-dark" id="portfolio">
-        <div class="mosaique">
+        <div class="portfolio--tiling">
           <img
             src="assets/img/desktop/woman-sitting-graffiti_1920x1080.jpg"
             alt="femme assise adossée à un mur avec graffiti"
@@ -206,27 +209,31 @@
       </section>
 
       <section class="services" id="services">
-        <div class="firstService">
+        <div class="package">
           <img
             src="assets/img/mobile/woman-standing-graffiti_640x960.jpg"
             width="640"
-            alt="a woman in front of wings in graffiti "
+            height="960"
+            alt="a woman in front of wings in graffiti"
+            class="package--picture"
           />
-          <div class="firstServiceText">
+          <div class="package--description">
             <h3>Street Art</h3>
-            <p>Original street art photography centered on genuine emotions</p>
+            <p>Street art focused on genuine emotions</p>
             <p>Real customer connection</p>
             <p>Unique memories in orginal urban environment</p>
           </div>
         </div>
 
-        <div class="secondService">
+        <div class="package">
           <img
             src="assets/img/mobile/couple-kissing_640x959.jpg"
             width="640"
+            height="959"
             alt="a couple kissing"
+            class="package--picture"
           />
-          <div class="secondServiceText">
+          <div class="package--description">
             <h3>Wedding</h3>
             <p>Beautiful, emotive and contemporary wedding</p>
             <p>Focus on what really matters</p>
@@ -236,71 +243,114 @@
       </section>
 
       <section class="contact theme-dark" id="contact">
-        <div class="sectionMap">
-          <img src="./assets/img/mobile/map-location.png" alt="map location" />
+        <div class="contact--card">
+          <a href="javascript:void(0);">
+            <img
+              src="./assets/img/mobile/map-location.png"
+              alt="map location"
+              width="189"
+              height="225"
+            />
+          </a>
+          <div class="contact--info">
+            <p>
+              236 E 28TH ST APT 3B<br />
+              BROOKLYN NY 11226-7726<br />USA
+            </p>
+            <a href="mailto:olivier.boyd@gmail.com" class="strong"
+              >olivier.boyd@gmail.com</a
+            >
+            <a href="tel:716-224-9102" class="strong">(716)-224-9102</a>
+          </div>
+        </div>
+        <div class="contact--info--desktop">
           <p>
             236 E 28TH ST APT 3B<br />
             BROOKLYN NY 11226-7726<br />USA
           </p>
-          <p>olivier.boyd@gmail.com</p>
-          <p>(716)224-9102</p>
+          <a href="mailto:olivier.boyd@gmail.com" class="strong"
+            >olivier.boyd@gmail.com</a
+          >
+          <a href="tel:716-224-9102" class="strong">(716)-224-9102</a>
         </div>
-        <button class="btn btn-secondary">
-          Let's Work Together
+        <a class="btn btn-secondary" href="javascript:void(0);">
+          Let's work together
           <img
-            class="icon_default_secondary"
-            src="./assets/icon/cta/arrow-right-secondary.svg"
-            alt="flêche droite"
+            src="assets/icon/cta/arrow-right-secondary.svg"
+            alt="button icon right arrow"
+            width="17"
             height="10"
+            class="icon--default"
           />
           <img
-            class="icon_hover_secondary"
-            src="./assets/icon/cta/arrow-right-primary.svg"
-            alt="flêche droite"
+            src="assets/icon/cta/arrow-right-primary.svg"
+            alt="button icon right arrow"
+            width="17"
             height="10"
+            class="icon--hover"
           />
-        </button>
+        </a>
       </section>
     </main>
 
     <footer>
-      <div class="sectionFooter">
-        <div class="logoSociaux">
-          <img
-            src="./assets/icon/socials/facebook-primary.svg"
-            height="32"
-            alt="logo lien facebook"
-          />
-          <img
-            src="./assets/icon/socials/twitter-primary.svg"
-            height="32"
-            alt="logo lien twitter"
-          />
-          <img
-            src="./assets/icon/socials/instagram-primary.svg"
-            height="32"
-            alt="logo lien instagram"
-          />
-          <img
-            src="./assets/icon/socials/youtube-primary.svg"
-            height="32"
-            alt="logo lien youtube"
-          />
+      <div class="footer">
+        <ul class="footer--socials">
+          <li>
+            <a href="https://www.facebook.com"
+              ><img
+                src="/assets/icon/socials/facebook-primary.svg"
+                alt="facebook logo icon"
+                width="32"
+                height="32"
+            /></a>
+          </li>
+          <li>
+            <a href="https://www.twitter.com"
+              ><img
+                src="/assets/icon/socials/twitter-primary.svg"
+                alt="twitter logo icon"
+                width="32"
+                height="32"
+            /></a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com"
+              ><img
+                src="/assets/icon/socials/instagram-primary.svg"
+                alt="instagram logo icon"
+                width="32"
+                height="32"
+            /></a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com"
+              ><img
+                src="/assets/icon/socials/youtube-primary.svg"
+                alt="youtube logo icon"
+                width="32"
+                height="32"
+            /></a>
+          </li>
+        </ul>
+
+        <div class="footer--description">
+          <div class="footer--brand">
+            <img
+              src="./assets/logo/logo-primary.svg"
+              height="40"
+              alt="logo Oliver Boyd Photography"
+            />
+            <p class="signature">Olivier Boyd</p>
+          </div>
+          <p>Oliver Boyd Photography</p>
         </div>
-        <div class="logoNom">
-          <img
-            src="./assets/logo/logo-primary.svg"
-            height="40"
-            alt="logo du photographe"
-          />
-          <p class="signature">Olivier Boyd</p>
-        </div>
-        <p>Olivier Boyrd Photography</p>
       </div>
-      <div class="copyrightFooter">
-        <p class="small">Copyright 2023 © - All Rights Reserved</p>
-      </div>
+      <p class="small footer--copyright theme-dark">
+        Copyright 2023 © - All Rights Reserved
+      </p>
     </footer>
+
     <script src="script.js"></script>
   </body>
 </html>
