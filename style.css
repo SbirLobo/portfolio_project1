@@ -128,7 +128,7 @@ p.signature {
   font-weight: var(--font-weight-bold);
 }
 
-.icon_hover {
+.icon_hover_secondary {
   display: none;
 }
 
@@ -201,7 +201,7 @@ footer {
 }
 
 .logoNom {
-  justify-content: space-evenly;
+
   padding: var(--padding);
 }
 
@@ -246,14 +246,14 @@ footer {
   color: var(--color-primary);
 }
 
-.btn-secondary:hover .icon_hover {
+.btn-secondary:hover .icon_hover_secondary {
   display: block;
 }
 
-.btn-secondary:hover .icon_default {
+.btn-secondary:hover .icon_default_secondary {
   display: none;
-  
 }
+
 /* ______________________________________________________________________ *\
     $MEDIA QUERIES (mobile first)
 \* ______________________________________________________________________ */
@@ -261,30 +261,34 @@ footer {
   .logoSociaux img {
     height: 64px;
   }
+
+  .logoSociaux {
+    justify-content: center;
+    gap: calc(15 * var(--gap));
+  }
   
   .logoNom img {
     height: 120px;
+  }
+
+  .logoNom {
+    justify-content: center;
+    gap: calc(13 * var(--gap));
   }
   
   p.signature {
     font-size: 3rem;
   }
 
-  .contact {
-    height: 60vh;
-  }
-
-  footer {
-    height: 40vh;
-  }
-
   .sectionFooter{
     flex-grow: 1;
     justify-content: center;
-    gap: var(--gap);
+    gap: calc( 3 * var(--gap));
   }
 
   .copyrightFooter {
-    padding: calc(4 * var(--padding));
+    padding: calc(3 * var(--padding));
   }
+
+  
 }
