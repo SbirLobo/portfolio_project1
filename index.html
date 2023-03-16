@@ -1,61 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="The Slytherin Team" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="The Slytherin Team">
     <meta
       name="description"
-      content="Hey, I'm Oliver. I am a  street art and event photographer based in Brooklyn NYC. I put my passion for visual storytelling to the service of the people across unique urban places"
-    />
+      content="Hey, I'm Oliver. I am a  street art and event photographer based in Brooklyn NYC. I put my passion for visual storytelling to the service of the people across unique urban places">
     <meta
       name="keywords"
-      content="oliver-boyd, photography, street-art, event, wedding, brooklyn, nyc"
-    />
+      content="oliver-boyd, photography, street-art, event, wedding, brooklyn, nyc">
     <title>Oliver Boyd Photography</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" type="image/x-icon" href="./assets/favicon/logo.svg" />
   </head>
-  
-  <body">
-  <header>
-    <nav class="main-nav"></nav>
-    <nav class="mobile-menu"></nav>
-  </header>
-  
-  <main>
-    <section class="hero"></section>
-    <section class="about"></section>
-    <section class="portfolio theme-dark"></section>
-    
-    <section class="services">
-      <div class="firstService">
-        <img src="assets/img/mobile/woman-standing-graffiti_640x960.jpg" width="640" alt="a woman in front of wings in graffiti ">
-        <div class="firstServiceText">
-          <h3>Street Art</h3>
-          <p>Original street art photography centered on genuine emotions </p>
-          <p>Real customer connection</p>
-          <p>Unique memories in orginal urban environment</p>
-        </div>
-      </div>
 
-      <div class="secondService">
-        <img src="assets/img/mobile/couple-kissing_640x959.jpg" width="640" alt="a couple kissing">
-        <div class="secondServiceText">
-          <h3>Wedding</h3>
-          <p>Beautiful, emotive and contemporary wedding</p>
-          <p>Focus on what really matters</p>
-          <p>Make your memories last forever</p>
+  <body>
+    <header>
+      <nav class="nav">
+        <div class="nav--brand-identity">
+          <a href="./index.html"
+            ><img
+              src="assets/logo/logo-primary.svg"
+              alt="logo Oliver Boyd Photography"
+              width="40"
+              height="40"
+          /></a>
+          <span class="nav--signature signature">Oliver Boyd</span>
         </div>
-      </div>
-    </section>
-    
-    <section class="contact theme-dark"></section>
-  </main>
+        <ul class="nav--list">
+          <li class="nav--item"><a href="#about">About Me</a></li>
+          <li class="nav--item"><a href="#portfolio">Portfolio</a></li>
+          <li class="nav--item"><a href="#services">Services</a></li>
+          <li class="nav--item"><a href="#contact">Contact</a></li>
+        </ul>
+        <img
+          class="nav--mobile-menu"
+          src="assets/icon/mobile/menu-hamburger-primary.svg"
+          alt="hamburger menu"
+          width="24"
+          height="24"
+        />
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="hero">
+        <ul class="hero--socials">
+          <li>
+            <a href="https://www.facebook.com"
+              ><img
+                src="/assets/icon/socials/facebook-secondary.svg"
+                alt="facebook logo icon"
+                width="32"
+                height="32"
+            /></a>
+          </li>
+          <li>
+            <a href="https://www.twitter.com"
+              ><img
+                src="/assets/icon/socials/twitter-secondary.svg"
+                alt="twitter logo icon"
+                width="32"
+                height="32"
+            /></a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com"
+              ><img
+                src="/assets/icon/socials/instagram-secondary.svg"
+                alt="instagram logo icon"
+                width="32"
+                height="32"
+            /></a>
+          </li>
+          <li>
+            <a href="https://www.youtube.com"
+              ><img
+                src="/assets/icon/socials/youtube-secondary.svg"
+                alt="youtube logo icon"
+                width="32"
+                height="32"
+            /></a>
+          </li>
+        </ul>
+
+        <div class="hero--message">
+          <h1>Create Visual Stories.</h1>
+          <a class="btn btn-secondary" href="#portfolio">
+            My Work
+            <img
+              src="assets/icon/cta/arrow-right-secondary.svg"
+              alt="right arrow"
+              width="17"
+              height="10"
+              class="icon--default"
+            />
+            <img
+              src="assets/icon/cta/arrow-right-primary.svg"
+              alt="right arrow"
+              width="17"
+              height="10"
+              class="icon--hover"
+            />
+          </a>
+        </div>
+      </section>
+
+      <section class="about" id="about">
+        <img class="photoProfil" src="assets/img/desktop/picture-profile_2440x300.jpg" width="2440px" alt="Photo de Profil"/>
+        <div>
+          <h2>Hey, I'm Oliver.</h2>
+          <p>I am a  street art and event <br> photographer based in Brooklyn <br> NYC. I put my passion for visual <br> storytelling to the service of the <br> people across unique urban places</p>
+          <button class="thirdthButton">Contact Me 
+            <img class="icon_default_accent" src="assets/icon/cta/arrow-right-accent.svg" alt="bouton flèche droite" height="10px"/>
+            <img class="icon_hover_accent" src="assets/icon/cta/arrow-right-secondary.svg" alt="bouton flèche droite" height="10px"/>
+          </button>
+        </div>
+      </section>
+
+      <section class="portfolio theme-dark" id="portfolio">
+        <div class="mosaique">
+          <img
+            src="assets/img/desktop/woman-sitting-graffiti_1920x1080.jpg"
+            alt="femme assise adossée à un mur avec graffiti"
+            width="1920"
+            class="img1"
+          />
+          <img
+            src="assets/img/desktop/wedding-couple-street_1920x1280.jpg"
+            alt="couple de jeunes mariés"
+            width="1920"
+            class="img2"
+          />
+          <img
+            src="assets/img/desktop/bride-roses_1920x3060.jpg"
+            alt="femme en robe noir de dos"
+            width="1920"
+            class="img3"
+          />
+          <img
+            src="assets/img/desktop/bride-graffiti_2400x1596.jpg"
+            alt="femme en robe de mariée assise dans un escalier"
+            width="2400"
+            class="img4"
+          />
+
+          <img
+            src="assets/img/desktop/pedestrian-crossing-night_1920x2886.jpg"
+            alt="femme traversant la rue"
+            width="1920"
+            class="img5"
+          />
+          <img
+            src="assets/img/desktop/man-smoke-sunglasses_1920x1280.jpg"
+            alt="homme qui recrache de la fumée"
+            width="1920"
+            class="img6"
+          />
+
+          <img
+            src="assets/img/desktop/man-bike-street-graffiti_1920x1525.jpg"
+            alt="homme qui marche en tenant son vélo devant un mur illustré"
+            width="1920"
+            class="img7"
+          />
+          <img
+            src="assets/img/desktop/person-saxophone_1920x2880.jpg"
+            alt="gros plan sur un saxophone dans les mains d'un homme"
+            width="1920"
+            class="img8"
+          />
+          <img
+            src="assets/img/desktop/kid-playing-colours_1920x1920.jpg"
+            alt="enfant barbouillé de peinture qui s'éclabousse le visage"
+            width="1920"
+            class="img9"
+          />
+        </div>
+      </section>
+
+      <section class="services" id="services">
+        <div class="firstService">
+          <img src="assets/img/mobile/woman-standing-graffiti_640x960.jpg" width="640" alt="a woman in front of wings in graffiti ">
+          <div class="firstServiceText">
+            <h3>Street Art</h3>
+            <p>Original street art photography centered on genuine emotions </p>
+            <p>Real customer connection</p>
+            <p>Unique memories in orginal urban environment</p>
+          </div>
+        </div>
   
-  <footer></footer>
-  
-  <script src="script.js"></script>
+        <div class="secondService">
+          <img src="assets/img/mobile/couple-kissing_640x959.jpg" width="640" alt="a couple kissing">
+          <div class="secondServiceText">
+            <h3>Wedding</h3>
+            <p>Beautiful, emotive and contemporary wedding</p>
+            <p>Focus on what really matters</p>
+            <p>Make your memories last forever</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact theme-dark" id="contact"></section>
+    </main>
+
+    <footer></footer>
+
+    <script src="script.js"></script>
   </body>
 </html>
