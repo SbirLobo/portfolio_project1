@@ -1,6 +1,5 @@
 /* -------------------------------------- *\
     $CSS RULES ORDERING
-
     CSS rule {
       box (display, position, sizing)
       borders
@@ -135,10 +134,97 @@ p.signature {
 .hero {
 }
 
+
 /* ---------- ABOUT ---------- */
+
 .about {
+  height: 100vh;
+  display : flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--gap)*5);
 }
 
+.about h2 {
+  letter-spacing: var(--letter-spacing);
+}
+.about p {
+  width: 100%;
+  text-align: center;
+}
+
+.about .photoProfil{
+  display : none;
+}
+
+.about div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--gap)*2);
+}
+
+
+
+.icon_default_accent {
+  width: 6%;
+  height: 6%;
+}
+
+.icon_hover_accent {
+  width: 6%;
+  height: 6%;
+  display: none;
+}
+
+@media screen and (min-width: 992px) {
+  .about {
+    
+  }
+  .about .photoProfil{
+    
+    display: initial;
+    height: 350px;
+    width: 350px;
+    border-radius: 100%;
+    object-fit: cover;
+    
+    
+  }
+}
+
+
+  
+.thirdthButton {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap);
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 700;
+    background-color: var(--color-secondary);
+    border: var(--border-width) solid var(--color-accent);
+    color: #3c6e71;
+    padding: 8px 16px;
+    border-width: 2px;
+    border-radius: 8px;
+   
+  
+  }
+
+.thirdthButton:hover {
+  background-color: var(--color-accent);
+  color: var(--color-secondary);
+}
+.thirdthButton:hover .icon_default_accent{
+  display: none;
+}
+.thirdthButton:hover .icon_hover_accent{
+  display: block;
+}
 /* ---------- PORTFOLIO ---------- */
 .porfolio {
 }
@@ -169,5 +255,6 @@ p.signature {
 /* ______________________________________________________________________ *\
     $MEDIA QUERIES (mobile first)
 \* ______________________________________________________________________ */
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 992px) {
+
 }
