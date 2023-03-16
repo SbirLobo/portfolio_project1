@@ -359,7 +359,60 @@ header {
 }
 
 /* ---------- SERVICES ---------- */
+
 .services {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, 50%);
+}
+
+.firstService, .secondService {
+  display: flex;
+  margin: 1rem 2rem;
+}
+
+/* --margin : 32px */
+
+.secondService {
+  flex-direction: row-reverse;
+}
+
+.firstService img {
+  width: auto;
+  object-fit: contain;
+}
+
+.firstService > * {
+  flex:1 1 0;
+}
+
+.secondService img {
+  width: auto;
+  object-fit: contain;
+}
+
+.secondService > * {
+  flex:1 1 0;
+}
+
+.firstServiceText, .secondServiceText {
+  padding: 0 calc(2 * var(--padding));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.firstServiceText {
+  text-align: right;
+}
+
+.services p {
+  padding-bottom: var(--padding);
+}
+
+.services h3 {
+  padding-bottom: calc(2 * var(--padding));
 }
 
 /* ---------- CONTACT ---------- */
@@ -385,9 +438,6 @@ header {
     $MEDIA QUERIES (mobile first)
 \* ______________________________________________________________________ */
 @media screen and (min-width: 992px) {
-
-
-
   /* ---------- GLOBALS ---------- */
   :root {
     /* FONTS */
@@ -565,8 +615,40 @@ header {
 
   /* ---------- SERVICES ---------- */
 
+  .firstService, .secondService {
+    margin: 1rem 13rem;
+  }
+  
+  /* --margin : 32px */
+  
+  .firstServiceText, .secondServiceText {
+    padding: 0 calc(2 * var(--padding));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .firstServiceText {
+    text-align: left;
+  }
+
+  .secondServiceText {
+    text-align : right;
+  }
+  
+  .services p {
+    padding-bottom: var(--padding);
+    font-size: 1.25rem;
+  }
+  /* 20px -> 1.25rem*/
+  
+  .services h3 {
+    padding-bottom: calc(2 * var(--padding));
+    font-size: 3rem;
+  } 
+  /* 48px -> 3rem*/
+
   /* ---------- CONTACT ---------- */
 
   /* ---------- FOOTER ---------- */
-
 }
