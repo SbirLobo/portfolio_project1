@@ -24,8 +24,7 @@
   --font-family-signature: "Cherish", cursive;
 
   --font-size-body: 1rem;
-  --font-size-nav-link: 1rem;
-  --font-size-h1: 2rem;
+  --font-size-h1: clamp(2rem, 8vw, 5rem);
   --font-size-h2: 1.5rem;
   --font-size-h3: 1.5rem;
   --font-size-signature: 2rem;
@@ -99,13 +98,14 @@ body {
 h1,
 h2 {
   font-family: var(--font-family-heading);
-  letter-spacing: var(--line-height);
+  letter-spacing: var(--letter-spacing);
 }
 
 h1 {
   color: var(--color-secondary);
   font-size: var(--font-size-h1);
   letter-spacing: var(--letter-spacing);
+  white-space: nowrap;
 }
 
 h2 {
@@ -119,13 +119,16 @@ h3 {
 
 /* applies to both visited an unvisited link */
 a:any-link {
-  color: var(--color-primary);
   cursor: pointer;
   text-decoration: none;
 }
 
-a:hover,
-a:focus-visible {
+a:any-link:not(.btn) {
+  color: var(--color-primary);
+}
+
+a:hover:not(.btn),
+a:focus-visible:not(.btn) {
   font-weight: var(--font-weight-bold);
   text-decoration: underline;
 }
@@ -142,23 +145,56 @@ p.small {
     $MODULE
 \* ______________________________________________________________________ */
 /* ---------- UTILITIES ---------- */
-.btn {
-  padding: var(--padding) calc(2 * var(--padding));
-  border-width: var(--border-width);
-  border-radius: var(--border-radius);
-}
-
 .signature {
   cursor: default;
   font-family: var(--font-family-signature);
   font-size: var(--font-size-signature);
 }
 
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap);
+
+  padding: var(--padding) calc(2 * var(--padding));
+
+  border-width: var(--border-width);
+  border-radius: var(--border-radius);
+
+  font-weight: var(--font-weight-bold);
+}
+
+.btn-secondary {
+  color: var(--color-secondary);
+  border: var(--border-width) solid var(--color-secondary);
+}
+
+.icon--hover {
+  display: none;
+}
+
+.btn:hover .icon--default {
+  display: none;
+}
+
+.btn:hover .icon--hover {
+  display: block;
+}
+
+.btn.btn-secondary:hover {
+  color: var(--color-primary);
+  background-color: var(--color-secondary);
+}
+
 /* ---------- HEADER ---------- */
 header {
-  position: sticky;
-  top: 0;
+  /* position: sticky; */
+  /* top: 0; */
+  position: fixed;
+  width: 100%;
   z-index: 9999;
+
   background-color: var(--color-secondary);
 }
 
@@ -185,11 +221,44 @@ header {
   cursor: pointer;
 }
 
-/* .mobile-menu {
-} */
-
 /* ---------- HERO ---------- */
 .hero {
+  min-height: 100vh;
+
+  /* add extra top padding to account for the height of the fixed navbar */
+  padding-top: calc(calc(12 * var(--padding)) + calc(2 * var(--padding)));
+  padding-inline: calc(2 * var(--padding));
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+  align-items: center;
+
+  background-image: url(assets/img/desktop/hero-banner_2400x1800.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero--socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(2 * var(--gap));
+
+  width: fit-content;
+  margin-inline: auto;
+
+  backdrop-filter: blur(2px);
+
+  list-style: none;
+}
+
+.hero--message {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: calc(2 * var(--gap));
 }
 
 /* ---------- ABOUT ---------- */
@@ -218,6 +287,7 @@ header {
   border-radius: calc(var(--border-radius) * 1.8);
   border: var(--border-radius) solid transparent;
 }
+
 /* ---------- SERVICES ---------- */
 .services {
 }
@@ -245,23 +315,40 @@ header {
     $MEDIA QUERIES (mobile first)
 \* ______________________________________________________________________ */
 @media screen and (min-width: 992px) {
-  /* GLOBALS */
+  /* ---------- GLOBALS ---------- */
   :root {
+    /* FONTS */
     --font-size-body: 1.25rem;
     --font-size-h1: 5rem;
     --font-size-h2: 4rem;
     --font-size-h3: 3rem;
     --font-size-signature: 3rem;
     --font-size-body-small: 1rem;
+
+    /* SPACING */
+    --gap: 24px;
+    --margin: 160px;
+    --padding: 16px;
   }
 
   /* ---------- UTILITIES ---------- */
+  .btn {
+    padding-inline: calc(6 * var(--padding));
+  }
+
+  .icon--default,
+  .icon--hover {
+    width: 34px;
+    height: 20px;
+  }
 
   /* ---------- HEADER ---------- */
+  .nav {
+    padding: calc(2 * var(--padding));
+  }
+
   .nav--brand-identity {
-    display: flex;
-    align-items: center;
-    gap: calc(4 * var(--padding));
+    gap: calc(2 * var(--padding));
   }
 
   .nav--signature {
@@ -277,13 +364,32 @@ header {
   }
 
   .nav--item {
-    padding: calc(2 * var(--padding)) calc(4 * var(--padding));
+    padding: var(--padding) calc(2 * var(--padding));
   }
 
   .nav--mobile-menu {
     display: none;
   }
+
   /* ---------- HERO ---------- */
+  .hero {
+    /* add extra top padding to account for the height of the fixed navbar */
+    padding-top: calc(calc(8 * var(--padding)) + calc(4 * var(--padding)));
+    padding-inline: calc(8 * var(--padding));
+  }
+
+  .hero--socials {
+    gap: calc(4 * var(--gap));
+  }
+
+  .hero--socials img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .hero--message {
+    gap: calc(4 * var(--gap));
+  }
 
   /* ---------- ABOUT ---------- */
 
