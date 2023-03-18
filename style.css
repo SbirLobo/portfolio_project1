@@ -22,12 +22,13 @@
   --font-family-body: "Montserrat", sans-serif;
   --font-family-signature: "Cherish", cursive;
 
-  --font-size-body: 1rem;
   --font-size-h1: clamp(2rem, 8vw, 5rem);
   --font-size-h2: 1.5rem;
   --font-size-h3: 1.5rem;
-  --font-size-signature: 2rem;
+  /* --font-size-body: 1rem; */
+  --font-size-body: clamp(0.875rem, 2vw, 1.125rem);
   --font-size-body-small: 0.875rem;
+  --font-size-signature: 2rem;
 
   --font-weight-bold: 700;
   --font-weight-medium: 500;
@@ -331,8 +332,10 @@ header {
 \* ______________________________________________________________________ */
 .services {
   height: 100vh;
-  display: grid;
-  place-items: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .wrapper {
@@ -340,48 +343,41 @@ header {
   width: 100%;
 
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(2, 1fr);
-  gap: var(--gap);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, calc(50% - calc(2 * var(--gap)) / 2));
+  gap: calc(2 * var(--gap));
 }
 
-.package {
+.package--picture img {
   height: 100%;
   width: 100%;
-
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--gap);
-  place-items: center;
-}
-
-.package--picture {
-  height: 80%;
-  width: 80%;
   object-fit: cover;
 
   border-radius: var(--border-radius);
 }
 
-.package--description {
-  padding: var(--padding);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: calc(0.875 * var(--gap));
-}
-
-.package--description-2 {
-  order: -1;
-}
-
-.package--1 .package--picture {
+.wrapper :first-child.package--picture img {
   box-shadow: -5px 5px 15px var(--color-shadow);
 }
 
-.package--2 .package--picture {
+.wrapper :last-child.package--picture img {
   box-shadow: 5px 5px 15px var(--color-shadow);
+}
+
+.package--description {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.wrapper :nth-child(3).package--description {
+  text-align: right;
+}
+
+.package--description .decorate {
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-h1);
 }
 
 /* ______________________________________________________________________ *\
@@ -499,10 +495,13 @@ header {
   \* ____________________________________________ */
   :root {
     /* FONTS */
-    --font-size-body: 1.25rem;
-    --font-size-h1: 5rem;
+    /* --font-size-body: 1.25rem; */
+    --font-size-body: clamp(1rem, 2vw, 1.25rem);
+    /* --font-size-h1: 5rem; */
+    --font-size-h1: clamp(2rem, 8vw, 5rem);
     --font-size-h2: 4rem;
-    --font-size-h3: 3rem;
+    /* --font-size-h3: 3rem; */
+    --font-size-h3: clamp(2rem, 2.2vw, 3rem);
     --font-size-signature: 3rem;
     --font-size-body-small: 1rem;
 
@@ -516,6 +515,7 @@ header {
     $BASE
   \* ____________________________________________ */
   section:not(.hero),
+  section:not(.services),
   .footer {
     padding: calc(10 * var(--padding));
   }
@@ -525,6 +525,7 @@ header {
   \* ____________________________________________ */
   .btn {
     padding-inline: calc(6 * var(--padding));
+    white-space: nowrap;
   }
 
   .icon--default,
@@ -591,7 +592,7 @@ header {
   \* ____________________________________________ */
   .about {
     flex-direction: row;
-    gap: calc(4 * var(--gap));
+    gap: calc(8 * var(--gap));
   }
 
   .about--picture {
@@ -684,52 +685,58 @@ header {
   /* ____________________________________________ *\
     $SERVICES
   \* ____________________________________________ */
-  .services {
-    height: 100vh;
-    display: grid;
-    place-items: center;
+  section.services {
+    padding: calc(5 * var(--padding)) calc(10 * var(--padding));
+    --gap: clamp(8px, 2vh, 24px);
   }
 
-  .wrapper {
-    /* background-color: lightcoral; */
-
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-    gap: 0;
+  .services p {
+    font-size: var(--font-size-body);
   }
 
-  .package {
-    /* background-color: lightseagreen; */
-    display: block;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, 1fr);
-    place-content: center;
-    gap: 0;
+  /* .wrapper {
+    gap: var(--gap);
+  } */
+
+  .package--picture img {
+    object-position: 0 40%;
   }
 
   .package--description {
-    padding: 0;
+    gap: var(--gap);
   }
-
-  .package--picture {
-    width: 40%;
-    height: auto;
-  }
-
   /* ____________________________________________ *\
     $CONTACT
   \* ____________________________________________ */
   .contact {
     flex-direction: row;
     justify-content: center;
-    gap: calc(11 * var(--gap));
+    gap: calc(12 * var(--gap));
   }
 
   .contact--card {
-    padding-bottom: calc(6 * var(--padding));
+    /* padding-bottom: calc(6 * var(--padding)); */
+    /* padding-inline: clamp(8px, 2vw, 32px); */
+    padding: 8px clamp(8px, 2vw, 16px) calc(6 * var(--padding));
+    flex-shrink: 0;
   }
 
+  /* .contact--card {
+  padding: calc(2 * var(--padding));
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: var(--gap);
+
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+
+  color: var(--color-primary);
+  text-align: center;
+  transform: rotate(-10deg);
+} */
   .contact--info {
     display: none;
   }
