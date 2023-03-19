@@ -160,16 +160,9 @@ a:active {
   font-weight: var(--font-weight-bold);
 }
 
-.btn:hover .icon--default {
-  display: none;
-}
-
-.btn:hover .icon--hover {
-  display: block;
-}
-
-.icon--hover {
-  display: none;
+.btn svg {
+  height: 14px;
+  width: 24px;
 }
 
 .signature {
@@ -488,6 +481,10 @@ header {
   color: var(--color-primary);
 }
 
+.btn-secondary:hover svg path {
+  fill: var(--color-primary);
+}
+
 .btn-accent {
   color: var(--color-accent);
   border: var(--border-width) solid var(--color-accent);
@@ -496,6 +493,10 @@ header {
 .btn-accent:hover {
   background-color: var(--color-accent);
   color: var(--color-secondary);
+}
+
+.btn-accent:hover svg path {
+  fill: var(--color-secondary);
 }
 
 /* ______________________________________________________________________ *\
@@ -552,6 +553,11 @@ header {
   .social-icons img {
     width: 48px;
     height: 48px;
+  }
+
+  .btn svg {
+    height: 20px;
+    width: 34px;
   }
 
   /* ____________________________________________ *\
