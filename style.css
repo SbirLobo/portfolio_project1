@@ -22,12 +22,13 @@
   --font-family-body: "Montserrat", sans-serif;
   --font-family-signature: "Cherish", cursive;
 
-  --font-size-body: 1rem;
   --font-size-h1: clamp(2rem, 8vw, 5rem);
   --font-size-h2: 1.5rem;
   --font-size-h3: 1.5rem;
-  --font-size-signature: 2rem;
+  /* --font-size-body: 1rem; */
+  --font-size-body: clamp(0.875rem, 2vw, 1.125rem);
   --font-size-body-small: 0.875rem;
+  --font-size-signature: 2rem;
 
   --font-weight-bold: 700;
   --font-weight-medium: 500;
@@ -82,6 +83,8 @@ img {
 html {
   /* smooth on-screen transition when clicking on a link to reach an in-page section */
   scroll-behavior: smooth;
+  /* add extra top padding to account for the height of the fixed navbar */
+  scroll-padding-top: calc(8 * var(--padding));
 }
 
 body {
@@ -159,16 +162,9 @@ a:active {
   font-weight: var(--font-weight-bold);
 }
 
-.btn:hover .icon--default {
-  display: none;
-}
-
-.btn:hover .icon--hover {
-  display: block;
-}
-
-.icon--hover {
-  display: none;
+.btn svg {
+  height: 14px;
+  width: 24px;
 }
 
 .signature {
@@ -249,9 +245,8 @@ header {
 \* ______________________________________________________________________ */
 .hero {
   min-height: 100vh;
-
   /* add extra top padding to account for the height of the fixed navbar */
-  padding-top: calc(calc(12 * var(--padding)) + calc(2 * var(--padding)));
+  padding-top: calc(calc(9 * var(--padding)) + calc(4 * var(--padding)));
   padding-inline: calc(2 * var(--padding));
 
   display: grid;
@@ -330,13 +325,51 @@ header {
   display: none;
 }
 
+.img1 {
+  order: 1;
+}
+
+.img5 {
+  order: 2;
+}
+
+.img7 {
+  order: 3;
+}
+
+.img2 {
+  order: 4;
+}
+
+.img8 {
+  order: 5;
+}
+
+.img6 {
+  order: 6;
+}
+
+.img3 {
+  order: 7;
+}
+
+.img4 {
+  order: 8;
+}
+
+.img9 {
+  order: 9;
+}
+
 /* ____________________________________________________________________ *\
     $SERVICES
 \* ______________________________________________________________________ */
 .services {
   height: 100vh;
-  display: grid;
-  place-items: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .wrapper {
@@ -344,48 +377,50 @@ header {
   width: 100%;
 
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(2, 1fr);
-  gap: var(--gap);
-}
-
-.package {
-  height: 100%;
-  width: 100%;
-
-  display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--gap);
-  place-items: center;
+  grid-template-rows: repeat(2, calc(50% - calc(0.5 * var(--gap))));
+  row-gap: var(--gap);
+  column-gap: calc(2 * var(--gap));
 }
 
 .package--picture {
-  height: 80%;
-  width: 80%;
-  object-fit: cover;
-
-  border-radius: var(--border-radius);
-}
-
-.package--description {
-  padding: var(--padding);
-
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: calc(0.875 * var(--gap));
+  justify-content: center;
+  align-items: center;
 }
 
-.package--description-2 {
-  order: -1;
+.package--picture img {
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+  aspect-ratio: 1;
+
+  border-radius: 100%;
 }
 
-.package--1 .package--picture {
+.wrapper :first-child.package--picture img {
   box-shadow: -5px 5px 15px var(--color-shadow);
 }
 
-.package--2 .package--picture {
+.wrapper :last-child.package--picture img {
   box-shadow: 5px 5px 15px var(--color-shadow);
+}
+
+.package--description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+}
+
+.wrapper :nth-child(3).package--description {
+  text-align: right;
+}
+
+.package--description .decorate {
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-h1);
 }
 
 /* ______________________________________________________________________ *\
@@ -404,6 +439,7 @@ header {
 }
 
 .contact--card {
+  max-width: 240px;
   padding: calc(2 * var(--padding));
 
   display: flex;
@@ -418,6 +454,11 @@ header {
   color: var(--color-primary);
   text-align: center;
   transform: rotate(-10deg);
+}
+
+.contact--card img {
+  max-width: 100%;
+  height: auto;
 }
 
 .contact--info {
@@ -484,6 +525,10 @@ header {
   color: var(--color-primary);
 }
 
+.btn-secondary:hover svg path {
+  fill: var(--color-primary);
+}
+
 .btn-accent {
   color: var(--color-accent);
   border: var(--border-width) solid var(--color-accent);
@@ -492,6 +537,10 @@ header {
 .btn-accent:hover {
   background-color: var(--color-accent);
   color: var(--color-secondary);
+}
+
+.btn-accent:hover svg path {
+  fill: var(--color-secondary);
 }
 
 /* ______________________________________________________________________ *\
@@ -503,10 +552,13 @@ header {
   \* ____________________________________________ */
   :root {
     /* FONTS */
-    --font-size-body: 1.25rem;
-    --font-size-h1: 5rem;
+    /* --font-size-body: 1.25rem; */
+    --font-size-body: clamp(1rem, 2vw, 1.25rem);
+    /* --font-size-h1: 5rem; */
+    --font-size-h1: clamp(2rem, 8vw, 5rem);
     --font-size-h2: 4rem;
-    --font-size-h3: 3rem;
+    /* --font-size-h3: 3rem; */
+    --font-size-h3: clamp(2rem, 2.2vw, 3rem);
     --font-size-signature: 3rem;
     --font-size-body-small: 1rem;
 
@@ -522,6 +574,11 @@ header {
   /* ____________________________________________ *\
     $BASE
   \* ____________________________________________ */
+  html {
+    /* add extra top padding to account for the height of the fixed navbar */
+    scroll-padding-top: calc(5.5 * var(--padding));
+  }
+
   section:not(.hero, .portfolio),
   .footer {
     padding: calc(10 * var(--padding));
@@ -532,6 +589,7 @@ header {
   \* ____________________________________________ */
   .btn {
     padding-inline: calc(6 * var(--padding));
+    white-space: nowrap;
   }
 
   .icon--default,
@@ -549,11 +607,16 @@ header {
     height: 48px;
   }
 
+  .btn svg {
+    height: 20px;
+    width: 34px;
+  }
+
   /* ____________________________________________ *\
     $HEADER
   \* ____________________________________________ */
   .nav {
-    padding: calc(2 * var(--padding));
+    padding: var(--padding) calc(2 * var(--padding));
   }
 
   .nav--brand-identity {
@@ -585,7 +648,7 @@ header {
   \* ____________________________________________ */
   .hero {
     /* add extra top padding to account for the height of the fixed navbar */
-    padding-top: calc(calc(8 * var(--padding)) + calc(4 * var(--padding)));
+    padding-top: calc(calc(6 * var(--padding)) + calc(4 * var(--padding)));
     padding-inline: calc(8 * var(--padding));
   }
 
@@ -598,7 +661,7 @@ header {
   \* ____________________________________________ */
   .about {
     flex-direction: row;
-    gap: calc(4 * var(--gap));
+    gap: calc(8 * var(--gap));
   }
 
   .about--picture {
@@ -729,7 +792,7 @@ header {
   .portfolio .popup-on img:hover {
     filter: grayscale(0);
     transition: filter 0.8s ease-in-out;
-    cursor: url("assets/icon/cursor/camera.png"), auto;
+    cursor: url("./assets/icon/cursor/camera.png"), auto;
   }
 
   .portfolio .popup-on .leftButton .icon_default_accent {
@@ -750,86 +813,76 @@ header {
     cursor: pointer;
     border: none;
   }
-  /* .portfolio .popup-on .leftButton .icon_hover_accent {
-    width: 45px;
-    height: 45px;
-    position: absolute;
-    top: 50%;
-    left: 5%;
-    cursor: pointer;
-    display: none;
-    border: none;
-  } */
-  /* .portfolio .popup-on .rightButton .icon_hover_accent {
-    width: 45px;
-    height: 45px;
-    position: absolute;
-    top: 50%;
-    left: 95%;
-    cursor: pointer;
-    display: none;
-    border: none;
-  } */
-  /* .portfolio .popup-on .leftButton .icon_default_accent:hover {
-    display: none;
-  } */
-  /* .portfolio .popup-on .rightButton .icon_default_accent:hover {
-    display: none;
-  } */
-  /* .portfolio .popup-on .leftButton .icon_hover_accent:hover {
-    display: block;
-  } */
-  /* .portfolio .popup-on .rightButton .icon_hover_accent:hover {
-    display: block;
-  } */
 
   /* ____________________________________________ *\
     $SERVICES
   \* ____________________________________________ */
-  .services {
-    height: 100vh;
-    display: grid;
-    place-items: center;
+  section.services {
+    padding: calc(10 * var(--padding));
+  }
+
+  .services p {
+    font-size: var(--font-size-body);
   }
 
   .wrapper {
-    /* background-color: lightcoral; */
-
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-    gap: 0;
-  }
-
-  .package {
-    /* background-color: lightseagreen; */
-    display: block;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(2, 1fr);
-    place-content: center;
-    gap: 0;
-  }
-
-  .package--description {
-    padding: 0;
+    grid-template-rows: 60% calc(40% - calc(0.5 * var(--gap)));
+    row-gap: calc(0.5 * var(--gap));
+    column-gap: calc(4 * var(--gap));
   }
 
   .package--picture {
-    width: 40%;
-    height: auto;
+    height: 100%;
+    width: 100%;
+    align-self: center;
+  }
+
+  .package--picture img {
+    max-height: 100%;
+    width: auto;
+    margin: 0 auto;
+  }
+
+  .wrapper :last-child.package--picture {
+    grid-row: 1 / span 1;
+    grid-column: 2 / span 1;
+  }
+
+  .wrapper :nth-child(2).package--description {
+    grid-row: 2 / span 1;
+    grid-column: 1 / span 1;
+  }
+
+  .wrapper :nth-child(3).package--description {
+    grid-row: 2 / span 1;
+    grid-column: 2 / span 1;
+  }
+
+  .package--description {
+    height: 100%;
+  }
+
+  .package--description .decorate {
+    font-size: clamp(var(--font-size-h3), 2vh, var(--font-size-h1));
   }
 
   /* ____________________________________________ *\
     $CONTACT
   \* ____________________________________________ */
   .contact {
+    height: 100vh;
     flex-direction: row;
-    justify-content: center;
-    gap: calc(11 * var(--gap));
+    justify-content: space-around;
   }
 
   .contact--card {
-    padding-bottom: calc(6 * var(--padding));
+    min-width: 400px;
+    padding: calc(2 * var(--padding)) calc(2 * var(--padding))
+      calc(10 * var(--padding));
+  }
+
+  .contact--card {
+    max-width: 200px;
   }
 
   .contact--info {
@@ -866,7 +919,12 @@ header {
   }
 
   .footer--brand {
-    gap: calc(4 * var(--gap));
+    gap: calc(5 * var(--gap));
+  }
+
+  .footer .signature {
+    --font-size-signature: 5rem;
+    font-size: var(--font-size-signature);
   }
 
   .footer--copyright {
