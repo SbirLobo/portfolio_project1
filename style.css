@@ -427,13 +427,17 @@ header {
   height: 100vh;
 }
 
-.contact, footer, .logoNom, .sectionMap {
+.contact, footer, .logoNom, .sectionMapMobile {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
 
-.sectionMap {
+.sectionMapDesktop {
+  display: none;
+}
+
+.sectionMapMobile {
   background-color: var(--color-secondary);
   flex-direction: column;
   width: 65%;
@@ -443,12 +447,12 @@ header {
   gap: var(--gap);
 }
 
-.sectionMap p {
+.sectionMapMobile p {
   color: var(--color-primary);
   text-align: center;
 }
 
-.sectionMap p:nth-child(3), .sectionMap p:nth-child(4) {
+.sectionMapMobile p:nth-child(3), .sectionMapMobile p:nth-child(4) {
   font-weight: var(--font-weight-bold);
 }
 
@@ -736,8 +740,44 @@ footer {
   /* ---------- CONTACT ---------- */
 
   /* ---------- FOOTER ---------- */
+  .sectionMapMobile {
+    display: none;
+  }
+
+  .contact button:nth-child(2) {
+    display: none;
+  }
+
+  .sectionMapDesktop {
+    display: flex;
+    width: 80%;
+    justify-content: space-around;
+  }
+
   .logoSociaux img {
     height: 64px;
+  }
+
+  .containerImgMap {
+    display: flex;
+    justify-content: center;
+    padding: var(--padding) var(--padding)  calc(4 *var(--padding)) var(--padding);
+    background-color: var(--color-secondary);
+    border-radius: var(--border-radius);
+    transform : rotate(-10deg);
+  }
+
+  .containerInfoContact {
+    color: var(--color-secondary);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:  calc(2 *var(--gap));
+  }
+  
+  .containerInfoContact p:nth-child(2), .containerInfoContact p:nth-child(3){
+    font-weight: var(--font-weight-bold);
   }
 
   .logoSociaux {
