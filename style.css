@@ -212,7 +212,7 @@ header {
   /* top: 0; */
   position: fixed;
   width: 100%;
-  z-index: 9999;
+  z-index: 99;
 
   background-color: var(--color-secondary);
 }
@@ -308,17 +308,21 @@ header {
     $PORTFOLIO
 \* ______________________________________________________________________ */
 .portfolio {
-  min-height: 100vh;
-
+  height: 100%;
+}
+.mosaique {
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   gap: var(--gap);
-  /* gap: clamp(calc(var(--gap) / 4), 0.1vw, calc(var(--gap) * 2)); */
 }
 
-.portfolio img {
+.mosaique img {
   border-radius: calc(2 * var(--border-radius));
   border: var(--border-width) solid transparent;
+}
+.popup-img {
+  display: none;
 }
 
 .img1 {
@@ -562,6 +566,9 @@ header {
     --gap: 24px;
     --margin: 160px;
     --padding: 16px;
+    --gap25: calc(25%- (calc(var(--gap) / 6)));
+    --gap8: calc(8%- (calc(var(--gap) / 6)));
+    --gap17: calc(17%- (calc(var(--gap) / 6)));
   }
 
   /* ____________________________________________ *\
@@ -572,7 +579,7 @@ header {
     scroll-padding-top: calc(5.5 * var(--padding));
   }
 
-  section:not(.hero),
+  section:not(.hero, .portfolio),
   .footer {
     padding: calc(10 * var(--padding));
   }
@@ -672,32 +679,35 @@ header {
   \* ____________________________________________ */
   .portfolio {
     height: 100vh;
-    padding-inline: calc(17.5 * var(--padding));
-
+  }
+  .mosaique {
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1.4fr 1.15fr;
-    grid-template-rows: 25% 8% 17% 17% 8% 25%;
-    gap: clamp(calc(var(--gap)), 0.1vw, calc(var(--gap) * 2));
+    grid-template-rows:
+      var(--gap25) var(--gap8) var(--gap17) var(--gap17) var(--gap8)
+      var(--gap25);
+    padding: calc(3 * var(--padding));
   }
 
-  .portfolio img {
+  .mosaique img {
     height: 100%;
     object-fit: cover;
-
     filter: grayscale(0);
-    transition: filter 0.3s ease-in-out, transform 0.5s ease-in-out;
+    transition: filter 0.8s ease-in-out, transform 0.8s ease-in-out;
   }
 
-  .portfolio img:hover {
+  .mosaique img:hover {
     cursor: url("assets/icon/cursor/camera.png"), auto;
     filter: grayscale(1);
     transform: scale(1.05);
+    transition: filter 0.8s ease-in-out, transform 0.8s ease-in-out;
   }
 
   .img1 {
     grid-column: 1 / 3;
     grid-row: 1 / 2;
-    object-position: 50% 25%;
+    object-position: 50% 15%;
   }
 
   .img2 {
@@ -714,12 +724,13 @@ header {
   .img4 {
     grid-column: 2 / 3;
     grid-row: 6 / 7;
+    object-position: 50% 15%;
   }
 
   .img5 {
     grid-column: 3 / 4;
     grid-row: 1 / 4;
-    object-position: 50% 80%;
+    object-position: 50% 50%;
   }
 
   .img6 {
@@ -731,17 +742,76 @@ header {
   .img7 {
     grid-column: 4 / 5;
     grid-row: 1 / 3;
+    object-position: 50% 40%;
   }
 
   .img8 {
     grid-column: 4 / 5;
     grid-row: 3 / 5;
-    object-position: 40% 80%;
+    object-position: 40% 90%;
   }
 
   .img9 {
     grid-column: 4 / 5;
     grid-row: 5 / 7;
+    object-position: 50% 50%;
+  }
+
+  .portfolio .popup-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    /*background: var(--color-primary);*/
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    display: none;
+  }
+
+  .portfolio .popup-on {
+    display: block;
+  }
+
+  .portfolio .popup-img img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid #fff;
+    border-radius: 5px;
+    width: 50vw;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .portfolio .popup-on img {
+    filter: grayscale(1);
+    transition: filter 0.8s ease-in-out;
+  }
+
+  .portfolio .popup-on img:hover {
+    filter: grayscale(0);
+    transition: filter 0.8s ease-in-out;
+    cursor: url("./assets/icon/cursor/camera.png"), auto;
+  }
+
+  .portfolio .popup-on .leftButton .icon_default_accent {
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    cursor: pointer;
+    border: none;
+  }
+  .portfolio .popup-on .rightButton .icon_default_accent {
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    top: 50%;
+    left: 95%;
+    cursor: pointer;
+    border: none;
   }
 
   /* ____________________________________________ *\
