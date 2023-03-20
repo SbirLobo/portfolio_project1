@@ -22,12 +22,13 @@
   --font-family-body: "Montserrat", sans-serif;
   --font-family-signature: "Cherish", cursive;
 
-  --font-size-body: 1rem;
   --font-size-h1: clamp(2rem, 8vw, 5rem);
   --font-size-h2: 1.5rem;
   --font-size-h3: 1.5rem;
-  --font-size-signature: 2rem;
+  /* --font-size-body: 1rem; */
+  --font-size-body: clamp(0.875rem, 2vw, 1.125rem);
   --font-size-body-small: 0.875rem;
+  --font-size-signature: 2rem;
 
   --font-weight-bold: 700;
   --font-weight-medium: 500;
@@ -39,7 +40,8 @@
   --color-primary: #353535;
   --color-secondary: #f5f5f5;
   --color-accent: #3c6e71;
-  --color-shadow: #d9d9d9;
+  --color-shadow: hsla(0, 0%, 21%, 0.7);
+  --color-white: #fff;
 
   /* BORDERS */
   --border-radius: 8px;
@@ -81,6 +83,8 @@ img {
 html {
   /* smooth on-screen transition when clicking on a link to reach an in-page section */
   scroll-behavior: smooth;
+  /* add extra top padding to account for the height of the fixed navbar */
+  scroll-padding-top: calc(8 * var(--padding));
 }
 
 body {
@@ -116,6 +120,11 @@ h3 {
   font-size: var(--font-size-h3);
 }
 
+section:not(.hero),
+.footer {
+  padding: calc(4 * var(--padding));
+}
+
 /* applies to both visited an unvisited link */
 a:any-link {
   cursor: pointer;
@@ -136,20 +145,9 @@ a:active {
   color: var(--color-accent);
 }
 
-p.small {
-  font-size: 0.875rem;
-}
-
 /* ______________________________________________________________________ *\
-    $MODULE
+    $UTILITIES
 \* ______________________________________________________________________ */
-/* ---------- UTILITIES ---------- */
-.signature {
-  cursor: default;
-  font-family: var(--font-family-signature);
-  font-size: var(--font-size-signature);
-}
-
 .btn {
   display: flex;
   justify-content: center;
@@ -160,43 +158,61 @@ p.small {
 
   border-width: var(--border-width);
   border-radius: var(--border-radius);
+
   font-weight: var(--font-weight-bold);
 }
 
-.icon_hover_secondary {
-  display: none;
+.btn svg {
+  height: 14px;
+  width: 24px;
+}
+
+.signature {
+  cursor: default;
+  font-family: var(--font-family-signature);
+  font-size: var(--font-size-signature);
+}
+
+.small {
+  font-size: var(--font-size-body-small);
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(2.5 * var(--gap));
+
+  width: fit-content;
+  margin-inline: auto;
+
+  list-style: none;
+}
+
+.social-icons img {
+  width: 40px;
+  height: 40px;
+
+  transition: transform 0.3s ease-in-out;
+}
+
+.social-icons img:hover {
+  transform: scale(1.1);
+}
+
+.strong {
   font-weight: var(--font-weight-bold);
 }
 
-.btn-secondary {
-  color: var(--color-secondary);
-  border: var(--border-width) solid var(--color-secondary);
-}
-
-.icon--hover {
-  display: none;
-}
-
-.btn:hover .icon--default {
-  display: none;
-}
-
-.btn:hover .icon--hover {
-  display: block;
-}
-
-.btn.btn-secondary:hover {
-  color: var(--color-primary);
-  background-color: var(--color-secondary);
-}
-
-/* ---------- HEADER ---------- */
+/* ______________________________________________________________________ *\
+    $HEADER
+\* ______________________________________________________________________ */
 header {
   /* position: sticky; */
   /* top: 0; */
   position: fixed;
   width: 100%;
-  z-index: 9999;
+  z-index: 99;
 
   background-color: var(--color-secondary);
 }
@@ -224,12 +240,13 @@ header {
   cursor: pointer;
 }
 
-/* ---------- HERO ---------- */
+/* ______________________________________________________________________ *\
+    $HERO
+\* ______________________________________________________________________ */
 .hero {
   min-height: 100vh;
-
   /* add extra top padding to account for the height of the fixed navbar */
-  padding-top: calc(calc(12 * var(--padding)) + calc(2 * var(--padding)));
+  padding-top: calc(calc(9 * var(--padding)) + calc(4 * var(--padding)));
   padding-inline: calc(2 * var(--padding));
 
   display: grid;
@@ -244,17 +261,7 @@ header {
 }
 
 .hero--socials {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: calc(2 * var(--gap));
-
-  width: fit-content;
-  margin-inline: auto;
-
   backdrop-filter: blur(2px);
-
-  list-style: none;
 }
 
 .hero--message {
@@ -264,230 +271,232 @@ header {
   gap: calc(2 * var(--gap));
 }
 
-
-/* ---------- ABOUT ---------- */
-
+/* ______________________________________________________________________ *\
+    $ABOUT
+\* ______________________________________________________________________ */
 .about {
-  height: 100vh;
-  display : flex;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: calc(var(--gap)*5);
+  gap: calc(2 * var(--gap));
 }
 
-.about h2 {
-  letter-spacing: var(--letter-spacing);
-}
 .about p {
-  width: 100%;
   text-align: center;
 }
 
-.about .photoProfil{
-  display : none;
+.about--picture {
+  height: 250px;
+  width: 250px;
+
+  border-radius: 100%;
+  object-fit: cover;
 }
 
-.about div {
+.about--description {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: calc(var(--gap)*2);
+  gap: calc(1.5 * var(--gap));
 }
 
-
-
-.icon_default_accent {
-  width: 6%;
-  height: 6%;
+/* ______________________________________________________________________ *\
+    $PORTFOLIO
+\* ______________________________________________________________________ */
+.portfolio {
+  height: 100%;
 }
-
-.icon_hover_accent {
-  width: 6%;
-  height: 6%;
-  display: none;
-}
-
-
-  
-.thirdthButton {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: var(--gap);
-    font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 700;
-    background-color: var(--color-secondary);
-    border: var(--border-width) solid var(--color-accent);
-    color: #3c6e71;
-    padding: 8px 16px;
-    border-width: 2px;
-    border-radius: 8px;
-   
-  
-  }
-
-.thirdthButton:hover {
-  background-color: var(--color-accent);
-  color: var(--color-secondary);
-}
-.thirdthButton:hover .icon_default_accent{
-  display: none;
-}
-.thirdthButton:hover .icon_hover_accent{
-  display: block;
-}
-/* ---------- PORTFOLIO ---------- */
-.porfolio {
-  height: 100vh;
-}
-
 .mosaique {
-  padding-left: calc(var(--padding));
-  padding-right: calc(var(--padding));
-  padding-top: calc(var(--padding));
-  padding-bottom: calc(var(--padding));
+  min-height: 100%;
   display: flex;
   flex-direction: column;
-  gap: clamp(calc(var(--gap) / 4), 0.1vw, calc(var(--gap) * 2));
+  gap: var(--gap);
 }
 
 .mosaique img {
-  position: relative;
-  filter: grayscale(0);
-  object-fit: cover;
-  border-radius: calc(var(--border-radius) * 1.8);
-  border: var(--border-radius) solid transparent;
+  border-radius: calc(2 * var(--border-radius));
+  border: var(--border-width) solid transparent;
 }
-
-/* ---------- SERVICES ---------- */
-
-.services {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(2, 50%);
-}
-
-.firstService, .secondService {
-  display: flex;
-  margin: 1rem 2rem;
-}
-
-/* --margin : 32px */
-
-.secondService {
-  flex-direction: row-reverse;
-}
-
-.firstService img {
-  width: auto;
-  object-fit: contain;
-}
-
-.firstService > * {
-  flex:1 1 0;
-}
-
-.secondService img {
-  width: auto;
-  object-fit: contain;
-}
-
-.secondService > * {
-  flex:1 1 0;
-}
-
-.firstServiceText, .secondServiceText {
-  padding: 0 calc(2 * var(--padding));
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.firstServiceText {
-  text-align: right;
-}
-
-.services p {
-  padding-bottom: var(--padding);
-}
-
-.services h3 {
-  padding-bottom: calc(2 * var(--padding));
-}
-
-/* ---------- CONTACT ---------- */
-.contact {
-  background-color: var(--color-primary);
-  flex-direction: column;
-  justify-content: center;
-  height: 100vh;
-}
-
-.contact, footer, .logoNom, .sectionMapMobile {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-.sectionMapDesktop {
+.popup-img {
   display: none;
 }
 
-.sectionMapMobile {
-  background-color: var(--color-secondary);
+.img1 {
+  order: 1;
+}
+
+.img5 {
+  order: 2;
+}
+
+.img7 {
+  order: 3;
+}
+
+.img2 {
+  order: 4;
+}
+
+.img8 {
+  order: 5;
+}
+
+.img6 {
+  order: 6;
+}
+
+.img3 {
+  order: 7;
+}
+
+.img4 {
+  order: 8;
+}
+
+.img9 {
+  order: 9;
+}
+
+/* ____________________________________________________________________ *\
+    $SERVICES
+\* ______________________________________________________________________ */
+.services {
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  height: 100%;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, calc(50% - calc(0.5 * var(--gap))));
+  row-gap: var(--gap);
+  column-gap: calc(2 * var(--gap));
+}
+
+.package--picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.package--picture img {
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+  aspect-ratio: 1;
+
+  border-radius: 100%;
+}
+
+.wrapper :first-child.package--picture img {
+  box-shadow: -5px 5px 15px var(--color-shadow);
+}
+
+.wrapper :last-child.package--picture img {
+  box-shadow: 5px 5px 15px var(--color-shadow);
+}
+
+.package--description {
+  display: flex;
   flex-direction: column;
-  width: 65%;
-  border-radius: var(--border-radius);
+  justify-content: center;
+  gap: 1em;
+}
+
+.wrapper :nth-child(3).package--description {
+  text-align: right;
+}
+
+.package--description .decorate {
+  font-weight: var(--font-weight-bold);
+  font-family: var(--font-family-heading);
+  font-size: var(--font-size-h1);
+}
+
+/* ______________________________________________________________________ *\
+    $CONTACT
+\* ______________________________________________________________________ */
+.contact {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(4 * var(--gap));
+
+  background-color: var(--color-primary);
+}
+
+.contact--card {
+  max-width: 240px;
   padding: calc(2 * var(--padding));
-  transform : rotate(-10deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: var(--gap);
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  color: var(--color-primary);
+  text-align: center;
+  transform: rotate(-10deg);
+}
+
+.contact--card img {
+  max-width: 100%;
+  height: auto;
+}
+
+.contact--info {
+  display: flex;
+  flex-direction: column;
   gap: var(--gap);
 }
 
-.sectionMapMobile p {
-  color: var(--color-primary);
-  text-align: center;
+.contact--info--desktop {
+  display: none;
 }
 
-.sectionMapMobile p:nth-child(3), .sectionMapMobile p:nth-child(4) {
-  font-weight: var(--font-weight-bold);
-}
-
-
-/* ---------- FOOTER ---------- */
-footer {
+/* ______________________________________________________________________ *\
+    $FOOTER
+\* ______________________________________________________________________ */
+.footer {
+  display: flex;
   flex-direction: column;
-}
-
-.logoSociaux{
-  display: flex;
-  justify-content: space-evenly;
-  padding: var(--padding);
-}
-
-.logoNom {
-
-  padding: var(--padding);
-}
-
-.sectionFooter {
-  margin: var(--margin);
-  width: 100%;
-  display: flex;
-  text-align: center;
   gap: calc(2 * var(--gap));
-  flex-direction: column;
 }
 
-.copyrightFooter {
-  background-color: var(--color-primary);
-  color: var(--color-secondary);
-  width: 100%;
+.footer--description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: calc(2 * var(--gap));
+
   text-align: center;
-  padding: var(--padding);
+}
+
+.footer--brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(2 * var(--gap));
+}
+
+.footer--copyright {
+  padding: calc(2 * var(--padding));
+  text-align: center;
 }
 
 /* ______________________________________________________________________ *\
@@ -504,9 +513,8 @@ footer {
 }
 
 .btn-secondary {
-  background-color: var(--color-primary);
-  border: var(--border-width) solid var(--color-secondary);
   color: var(--color-secondary);
+  border: var(--border-width) solid var(--color-secondary);
 }
 
 .btn-secondary:hover {
@@ -514,26 +522,40 @@ footer {
   color: var(--color-primary);
 }
 
-.btn-secondary:hover .icon_hover_secondary {
-  display: block;
+.btn-secondary:hover svg path {
+  fill: var(--color-primary);
 }
 
-.btn-secondary:hover .icon_default_secondary {
-  display: none;
+.btn-accent {
+  color: var(--color-accent);
+  border: var(--border-width) solid var(--color-accent);
+}
+
+.btn-accent:hover {
+  background-color: var(--color-accent);
+  color: var(--color-secondary);
+}
+
+.btn-accent:hover svg path {
+  fill: var(--color-secondary);
 }
 
 /* ______________________________________________________________________ *\
     $MEDIA QUERIES (mobile first)
 \* ______________________________________________________________________ */
 @media screen and (min-width: 992px) {
-  
-  /* ---------- GLOBALS ---------- */
+  /* ____________________________________________ *\
+    $GLOBALS
+  \* ____________________________________________ */
   :root {
     /* FONTS */
-    --font-size-body: 1.25rem;
-    --font-size-h1: 5rem;
+    /* --font-size-body: 1.25rem; */
+    --font-size-body: clamp(1rem, 2vw, 1.25rem);
+    /* --font-size-h1: 5rem; */
+    --font-size-h1: clamp(2rem, 8vw, 5rem);
     --font-size-h2: 4rem;
-    --font-size-h3: 3rem;
+    /* --font-size-h3: 3rem; */
+    --font-size-h3: clamp(2rem, 2.2vw, 3rem);
     --font-size-signature: 3rem;
     --font-size-body-small: 1rem;
 
@@ -541,11 +563,30 @@ footer {
     --gap: 24px;
     --margin: 160px;
     --padding: 16px;
+    --gap25: calc(25%- (calc(var(--gap) / 6)));
+    --gap8: calc(8%- (calc(var(--gap) / 6)));
+    --gap17: calc(17%- (calc(var(--gap) / 6)));
   }
 
-  /* ---------- UTILITIES ---------- */
+  /* ____________________________________________ *\
+    $BASE
+  \* ____________________________________________ */
+  html {
+    /* add extra top padding to account for the height of the fixed navbar */
+    scroll-padding-top: calc(5.5 * var(--padding));
+  }
+
+  section:not(.hero, .portfolio),
+  .footer {
+    padding: calc(10 * var(--padding));
+  }
+
+  /* ____________________________________________ *\
+    $UTILITIES
+  \* ____________________________________________ */
   .btn {
     padding-inline: calc(6 * var(--padding));
+    white-space: nowrap;
   }
 
   .icon--default,
@@ -554,9 +595,25 @@ footer {
     height: 20px;
   }
 
-  /* ---------- HEADER ---------- */
+  .social-icons {
+    gap: calc(4 * var(--gap));
+  }
+
+  .social-icons img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .btn svg {
+    height: 20px;
+    width: 34px;
+  }
+
+  /* ____________________________________________ *\
+    $HEADER
+  \* ____________________________________________ */
   .nav {
-    padding: calc(2 * var(--padding));
+    padding: var(--padding) calc(2 * var(--padding));
   }
 
   .nav--brand-identity {
@@ -583,228 +640,292 @@ footer {
     display: none;
   }
 
-  /* ---------- HERO ---------- */
+  /* ____________________________________________ *\
+    $HERO
+  \* ____________________________________________ */
   .hero {
     /* add extra top padding to account for the height of the fixed navbar */
-    padding-top: calc(calc(8 * var(--padding)) + calc(4 * var(--padding)));
+    padding-top: calc(calc(6 * var(--padding)) + calc(4 * var(--padding)));
     padding-inline: calc(8 * var(--padding));
-  }
-
-  .hero--socials {
-    gap: calc(4 * var(--gap));
-  }
-
-  .hero--socials img {
-    width: 48px;
-    height: 48px;
   }
 
   .hero--message {
     gap: calc(4 * var(--gap));
   }
 
-  /* ---------- ABOUT ---------- */
+  /* ____________________________________________ *\
+    $ABOUT
+  \* ____________________________________________ */
+  .about {
+    flex-direction: row;
+    gap: calc(8 * var(--gap));
+  }
 
-  
-    
-    .about .photoProfil{
-      
-      display: initial;
-      height: 350px;
-      width: 350px;
-      border-radius: 100%;
-      object-fit: cover;
-      
-      
-    }
-  
+  .about--picture {
+    height: 500px;
+    width: 500px;
+  }
 
-  /* ---------- PORTFOLIO ---------- */
-  .mosaique {
+  .about--description {
+    gap: calc(2 * var(--gap));
+    text-align: center;
+  }
+
+  /* ____________________________________________ *\
+    $PORTFOLIO
+  \* ____________________________________________ */
+  .portfolio {
     height: 100vh;
+  }
+  .mosaique {
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1.4fr 1.15fr;
-    grid-template-rows: 25% 8% 17% 17% 8% 25%;
-    padding-left: calc(var(--padding) * 20);
-    padding-right: calc(var(--padding) * 20);
-    padding-top: calc(var(--padding) * 10);
-    padding-bottom: calc(var(--padding) * 10);
+    grid-template-rows:
+      var(--gap25) var(--gap8) var(--gap17) var(--gap17) var(--gap8)
+      var(--gap25);
+    padding: calc(3 * var(--padding));
   }
 
   .mosaique img {
     height: 100%;
-    border-radius: calc(var(--border-radius) * 5);
+    object-fit: cover;
+    filter: grayscale(0);
+    transition: filter 0.8s ease-in-out, transform 0.8s ease-in-out;
   }
 
   .mosaique img:hover {
+    cursor: url("assets/icon/cursor/camera.png"), auto;
     filter: grayscale(1);
-    cursor: url(assets/icon/cursorPhoto.png), auto;
-    border: calc(var(--border-width) * 3) solid var(--color-shadow);
+    transform: scale(1.05);
+    transition: filter 0.8s ease-in-out, transform 0.8s ease-in-out;
   }
 
   .img1 {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    object-position: 50% 25%;
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    object-position: 50% 15%;
   }
+
   .img2 {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 6;
+    grid-column: 1 / 3;
+    grid-row: 2 / 6;
   }
+
   .img3 {
-    grid-column-start: 1;
-    grid-column-end: 2;
-    grid-row-start: 6;
-    grid-row-end: 7;
+    grid-column: 1 / 2;
+    grid-row: 6 / 7;
     object-position: 50% 30%;
   }
+
   .img4 {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 6;
-    grid-row-end: 7;
+    grid-column: 2 / 3;
+    grid-row: 6 / 7;
+    object-position: 50% 15%;
   }
+
   .img5 {
-    grid-column-start: 3;
-    grid-column-end: 4;
-    grid-row-start: 1;
-    grid-row-end: 4;
-    object-position: 50% 80%;
+    grid-column: 3 / 4;
+    grid-row: 1 / 4;
+    object-position: 50% 50%;
   }
+
   .img6 {
-    grid-column-start: 3;
-    grid-column-end: 4;
-    grid-row-start: 4;
-    grid-row-end: 7;
+    grid-column: 3 / 4;
+    grid-row: 4 / 7;
     object-position: 40% 80%;
   }
+
   .img7 {
-    grid-column-start: 4;
-    grid-column-end: 5;
-    grid-row-start: 1;
-    grid-row-end: 3;
+    grid-column: 4 / 5;
+    grid-row: 1 / 3;
+    object-position: 50% 40%;
   }
+
   .img8 {
-    grid-column-start: 4;
-    grid-column-end: 5;
-    grid-row-start: 3;
-    grid-row-end: 5;
-    object-position: 40% 80%;
+    grid-column: 4 / 5;
+    grid-row: 3 / 5;
+    object-position: 40% 90%;
   }
+
   .img9 {
-    grid-column-start: 4;
-    grid-column-end: 5;
-    grid-row-start: 5;
-    grid-row-end: 7;
+    grid-column: 4 / 5;
+    grid-row: 5 / 7;
+    object-position: 50% 50%;
   }
 
-  /* ---------- SERVICES ---------- */
-
-  .firstService, .secondService {
-    margin: 1rem 13rem;
-  }
-  
-  /* --margin : 32px */
-  
-  .firstServiceText, .secondServiceText {
-    padding: 0 calc(2 * var(--padding));
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  .firstServiceText {
-    text-align: left;
+  .portfolio .popup-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    /*background: var(--color-primary);*/
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    display: none;
   }
 
-  .secondServiceText {
-    text-align : right;
+  .portfolio .popup-on {
+    display: block;
   }
-  
+
+  .portfolio .popup-img img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid #fff;
+    border-radius: 5px;
+    width: 50vw;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .portfolio .popup-on img {
+    filter: grayscale(1);
+    transition: filter 0.8s ease-in-out;
+  }
+
+  .portfolio .popup-on img:hover {
+    filter: grayscale(0);
+    transition: filter 0.8s ease-in-out;
+    cursor: url("./assets/icon/cursor/camera.png"), auto;
+  }
+
+  .portfolio .popup-on .leftButton .icon_default_accent {
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    cursor: pointer;
+    border: none;
+  }
+  .portfolio .popup-on .rightButton .icon_default_accent {
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    top: 50%;
+    left: 95%;
+    cursor: pointer;
+    border: none;
+  }
+
+  /* ____________________________________________ *\
+    $SERVICES
+  \* ____________________________________________ */
+  section.services {
+    padding: calc(10 * var(--padding));
+  }
+
   .services p {
-    padding-bottom: var(--padding);
-    font-size: 1.25rem;
-  }
-  /* 20px -> 1.25rem*/
-  
-  .services h3 {
-    padding-bottom: calc(2 * var(--padding));
-    font-size: 3rem;
-  } 
-  /* 48px -> 3rem*/
-
-  /* ---------- CONTACT ---------- */
-
-  /* ---------- FOOTER ---------- */
-  .sectionMapMobile {
-    display: none;
+    font-size: var(--font-size-body);
   }
 
-  .contact button:nth-child(2) {
-    display: none;
+  .wrapper {
+    grid-template-rows: 60% calc(40% - calc(0.5 * var(--gap)));
+    row-gap: calc(0.5 * var(--gap));
+    column-gap: calc(4 * var(--gap));
   }
 
-  .sectionMapDesktop {
-    display: flex;
-    width: 80%;
+  .package--picture {
+    height: 100%;
+    width: 100%;
+    align-self: center;
+  }
+
+  .package--picture img {
+    max-height: 100%;
+    width: auto;
+    margin: 0 auto;
+  }
+
+  .wrapper :last-child.package--picture {
+    grid-row: 1 / span 1;
+    grid-column: 2 / span 1;
+  }
+
+  .wrapper :nth-child(2).package--description {
+    grid-row: 2 / span 1;
+    grid-column: 1 / span 1;
+  }
+
+  .wrapper :nth-child(3).package--description {
+    grid-row: 2 / span 1;
+    grid-column: 2 / span 1;
+  }
+
+  .package--description {
+    height: 100%;
+  }
+
+  .package--description .decorate {
+    font-size: clamp(var(--font-size-h3), 2vh, var(--font-size-h1));
+  }
+
+  /* ____________________________________________ *\
+    $CONTACT
+  \* ____________________________________________ */
+  .contact {
+    height: 100vh;
+    flex-direction: row;
     justify-content: space-around;
   }
 
-  .logoSociaux img {
-    height: 64px;
+  .contact--card {
+    min-width: 400px;
+    padding: calc(2 * var(--padding)) calc(2 * var(--padding))
+      calc(10 * var(--padding));
   }
 
-  .containerImgMap {
-    display: flex;
-    justify-content: center;
-    padding: var(--padding) var(--padding)  calc(4 *var(--padding)) var(--padding);
-    background-color: var(--color-secondary);
-    border-radius: var(--border-radius);
-    transform : rotate(-10deg);
+  .contact--card {
+    max-width: 200px;
   }
 
-  .containerInfoContact {
-    color: var(--color-secondary);
-    text-align: center;
+  .contact--info {
+    display: none;
+  }
+
+  .wrapper--desktop,
+  .contact--info--desktop {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap:  calc(2 *var(--gap));
-  }
-  
-  .containerInfoContact p:nth-child(2), .containerInfoContact p:nth-child(3){
-    font-weight: var(--font-weight-bold);
+    align-items: center;
+    gap: calc(2 * var(--gap));
+
+    text-align: center;
   }
 
-  .logoSociaux {
-    justify-content: center;
-    gap: calc(15 * var(--gap));
+  .contact--info--desktop a.strong {
+    color: var(--color-secondary);
   }
-  
-  .logoNom img {
+
+  /* ____________________________________________ *\
+    $FOOTER
+  \* ____________________________________________ */
+  .footer {
+    gap: calc(4 * var(--gap));
+  }
+
+  .logo {
     height: 120px;
   }
 
-  .logoNom {
-    justify-content: center;
-    gap: calc(13 * var(--gap));
-  }
-  
-  p.signature {
-    font-size: 3rem;
+  .footer--description {
+    gap: calc(4 * var(--gap));
   }
 
-  .sectionFooter{
-    flex-grow: 1;
-    justify-content: center;
-    gap: calc( 3 * var(--gap));
+  .footer--brand {
+    gap: calc(5 * var(--gap));
   }
 
-  .copyrightFooter {
-    padding: calc(3 * var(--padding));
+  .footer .signature {
+    --font-size-signature: 5rem;
+    font-size: var(--font-size-signature);
+  }
+
+  .footer--copyright {
+    padding-block: calc(2 * var(--padding));
+    padding-inline: calc(10 * var(--padding));
   }
 }
