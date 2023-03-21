@@ -218,6 +218,9 @@ header {
 }
 
 .nav {
+  /* parent reference for the absolute position of the nav mobile items */
+  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -229,6 +232,9 @@ header {
   display: flex;
   align-items: center;
   gap: calc(4 * var(--padding));
+
+  /* to display the nav mobile buttons on top of the nav mobile menu */
+  z-index: 2;
 }
 
 .nav--list,
@@ -236,8 +242,49 @@ header {
   display: none;
 }
 
-.nav--mobile-menu {
+.nav--list {
+  list-style: none;
+}
+
+.nav--mobile-btn {
   cursor: pointer;
+  outline: none;
+  border: none;
+  /* to display the nav mobile buttons on top of the nav mobile menu */
+  z-index: 2;
+}
+
+.nav--mobile-btn .menu-close {
+  display: none;
+}
+
+.is-open.nav--mobile-btn .menu-open {
+  display: none;
+}
+
+.is-open.nav--mobile-btn .menu-close {
+  display: block;
+}
+
+.is-open.nav--list {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  min-height: 100vh;
+
+  /* add extra top padding to account for the height of the fixed navbar */
+  padding-top: calc(9 * var(--padding));
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  --color-secondary: hsla(0, 0%, 96%, 0.7);
+  background-color: var(--color-secondary);
+  backdrop-filter: blur(20px);
 }
 
 /* ______________________________________________________________________ *\
@@ -254,7 +301,7 @@ header {
   grid-template-rows: auto 1fr;
   align-items: center;
 
-  background-image: url(assets/img/desktop/hero-banner_2400x1800.jpg);
+  background-image: url(./assets/img/desktop/hero-banner_2400x1800.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -629,15 +676,13 @@ header {
     display: flex;
     align-items: center;
     gap: calc(2 * var(--padding));
-
-    list-style: none;
   }
 
   .nav--item {
     padding: var(--padding) calc(2 * var(--padding));
   }
 
-  .nav--mobile-menu {
+  .nav--mobile-btn {
     display: none;
   }
 

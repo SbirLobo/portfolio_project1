@@ -1,9 +1,26 @@
+const navList = document.getElementById("nav--list");
+const navMenu = document.querySelector(".nav--mobile-btn");
+
 const listPortfolio = document.querySelectorAll(".mosaique img");
 const popup = document.querySelector(".popup-img");
 const popupImage = document.querySelector(".popup-img img");
 const rightBtn = document.querySelectorAll(".popup-img .rightButton");
 const leftBtn = document.querySelectorAll(".popup-img .leftButton");
 let classRef = "";
+
+/* ____________________________________________ *\
+    $MOBILE NAV MENU
+\* ____________________________________________ */
+// Add event listener on nav-mobile-btn
+navMenu.addEventListener("click", (event) => {
+  // On click, toggles the class is-open to display/hide the proper button
+  navMenu.classList.toggle("is-open");
+  navList.classList.toggle("is-open");
+});
+
+/* ____________________________________________ *\
+    $PORFOLIO SLIDER (DESKTOP)
+\* ____________________________________________ */
 
 listPortfolio.forEach((img) => {
   img.onclick = () => {
