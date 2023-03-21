@@ -260,8 +260,8 @@ header {
   list-style: none;
 
   /* animation (slide from left on open & close) */
-  margin-left: -100%;
-  transition: all 0.5s ease;
+  transform: translateX(-100%);
+  transition: all 0.7s;
 }
 
 .nav--mobile-btn {
@@ -290,7 +290,7 @@ header {
   backdrop-filter: blur(20px);
 
   /* animation */
-  margin-left: 0;
+  transform: translateX(0);
 }
 
 /* ______________________________________________________________________ *\
@@ -678,20 +678,21 @@ header {
     display: block;
   }
 
-  .nav--list {
-    position: relative;
+  .nav .nav--list {
+    position: static;
 
     width: auto;
     min-height: auto;
     padding-top: 0;
-    margin: 0;
 
-    display: flex;
+    justify-self: flex-end;
+
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: calc(2 * var(--padding));
 
+    transform: translateX(0);
     transition: none;
   }
 
