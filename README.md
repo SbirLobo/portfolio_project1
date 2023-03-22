@@ -2,7 +2,9 @@
 
 Bienvenue dans le fichier README du portfolio d'Oliver Boyd, photographe professionnel. Ce portfolio a été créé pour présenter une sélection de ses meilleures œuvres et pour donner un aperçu de son travail.
 
+
 #  Description of project
+
 
 Le portfolio d'Oliver Boyd se compose de plusieurs sections :
 
@@ -17,8 +19,6 @@ Contact : Cette section fournit les informations de contact d'Oliver Boyd pour c
 ## Homepage 🏠
 
 
-
-
 ## Technologie utilisé ⚙️
 
 - HTML 5
@@ -27,8 +27,9 @@ Contact : Cette section fournit les informations de contact d'Oliver Boyd pour c
 
 ## Team 👤
 
-- Chloé: 
-- Denis: 
-- Sébastien: 
-- Youcef: 
+
+- Chloé:
+- Denis:
+- Sébastien:
+- Youcef:
 - Alexis:

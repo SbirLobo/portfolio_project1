@@ -25,7 +25,7 @@ navMenu.addEventListener("click", (event) => {
 listPortfolio.forEach((img) => {
   img.onclick = () => {
     popupImage.src = img.getAttribute("src");
-    popup.classList.toggle("popup-on");
+    popup.classList.add("popup-on");
     classRef = img.className;
   };
 });
@@ -118,6 +118,6 @@ leftBtn.forEach((tip) => {
   };
 });
 popupImage.addEventListener("click", function () {
-  popup.classList.toggle("popup-on");
+  popup.classList.remove("popup-on");
   classRef = "";
 });
