@@ -218,6 +218,9 @@ header {
 }
 
 .nav {
+  /* parent reference for the absolute position of the nav mobile items */
+  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -229,15 +232,65 @@ header {
   display: flex;
   align-items: center;
   gap: calc(4 * var(--padding));
+
+  /* to display the nav mobile buttons on top of the nav mobile menu */
+  z-index: 2;
 }
 
-.nav--list,
+/* .nav--list, */
 .nav--signature {
   display: none;
 }
 
-.nav--mobile-menu {
+.nav--list {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  min-height: 100vh;
+  /* add extra top padding to account for the height of the fixed navbar */
+  padding-top: calc(9 * var(--padding));
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  list-style: none;
+
+  /* animation (slide from left on open & close) */
+  transform: translateX(-100%);
+  transition: all 0.7s;
+}
+
+.nav--mobile-btn {
   cursor: pointer;
+  outline: none;
+  border: none;
+  /* to display the nav mobile buttons on top of the nav mobile menu */
+  z-index: 2;
+}
+
+.nav--mobile-btn .menu-close {
+  display: none;
+}
+
+.is-open.nav--mobile-btn .menu-open {
+  display: none;
+}
+
+.is-open.nav--mobile-btn .menu-close {
+  display: block;
+}
+
+.is-open.nav--list {
+  --color-secondary: hsla(0, 0%, 96%, 0.7);
+  background-color: var(--color-secondary);
+  backdrop-filter: blur(20px);
+
+  /* animation */
+  transform: translateX(0);
 }
 
 /* ______________________________________________________________________ *\
@@ -254,7 +307,7 @@ header {
   grid-template-rows: auto 1fr;
   align-items: center;
 
-  background-image: url(assets/img/desktop/hero-banner_2400x1800.jpg);
+  background-image: url(./assets/img/desktop/hero-banner_2400x1800.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -324,42 +377,6 @@ header {
 }
 .popup-img {
   display: none;
-}
-
-.img1 {
-  order: 1;
-}
-
-.img5 {
-  order: 2;
-}
-
-.img7 {
-  order: 3;
-}
-
-.img2 {
-  order: 4;
-}
-
-.img8 {
-  order: 5;
-}
-
-.img6 {
-  order: 6;
-}
-
-.img3 {
-  order: 7;
-}
-
-.img4 {
-  order: 8;
-}
-
-.img9 {
-  order: 9;
 }
 
 /* ____________________________________________________________________ *\
@@ -625,19 +642,29 @@ header {
     display: block;
   }
 
-  .nav--list {
-    display: flex;
+  .nav .nav--list {
+    position: static;
+
+    width: auto;
+    min-height: auto;
+    padding-top: 0;
+
+    justify-self: flex-end;
+
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
     gap: calc(2 * var(--padding));
 
-    list-style: none;
+    transform: translateX(0);
+    transition: none;
   }
 
   .nav--item {
     padding: var(--padding) calc(2 * var(--padding));
   }
 
-  .nav--mobile-menu {
+  .nav--mobile-btn {
     display: none;
   }
 
