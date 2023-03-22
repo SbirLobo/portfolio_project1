@@ -114,7 +114,9 @@ h1 {
 h2 {
   font-size: var(--font-size-h2);
 }
-
+section:not(.about) h2 {
+  display: none;
+}
 h3 {
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-h3);
