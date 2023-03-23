@@ -58,6 +58,13 @@ listPortfolio.forEach((img) => {
   };
 });
 
+// Close the slider (popup box) if the user press the ESCAPE key
+document.body.addEventListener("keyup", (event) => {
+  if (event.keyCode == 27 && popup.classList.contains("popup-on")) {
+    popup.classList.remove("popup-on");
+  }
+});
+
 rightBtn.forEach((tip) => {
   tip.onclick = () => {
     switch (classRef) {
