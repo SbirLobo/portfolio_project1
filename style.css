@@ -1,14 +1,3 @@
-/* -------------------------------------- *\
-    $CSS RULES ORDERING
-    CSS rule {
-      box (display, position, sizing)
-      borders
-      background
-      text
-      other
-    }
-\* -------------------------------------- */
-
 /* ______________________________________________________________________ *\
     $GLOBAL
 \* ______________________________________________________________________ */
@@ -25,7 +14,6 @@
   --font-size-h1: clamp(2rem, 8vw, 5rem);
   --font-size-h2: 1.5rem;
   --font-size-h3: 1.5rem;
-  /* --font-size-body: 1rem; */
   --font-size-body: clamp(0.875rem, 2vw, 1.125rem);
   --font-size-body-small: 0.875rem;
   --font-size-signature: 2rem;
@@ -57,8 +45,8 @@
     $RESET
 \* ______________________________________________________________________ */
 *,
-*::before,
-*::after {
+::before,
+::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -67,6 +55,12 @@
 a {
   /* properly apply padding & margin */
   display: inline-block;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 img {
@@ -98,6 +92,25 @@ body {
   line-height: var(--font-line-height);
 }
 
+/* ? a title within each section is required to pass W3C html validator, but not desired for the layout */
+section:not(.about) h2 {
+  display: none;
+}
+
+/* !To be replaced by padding: calc(8 * var(--padding)) calc(4 * var(--padding)) IF scroll-snap feature is removed */
+section:not(.hero) {
+  padding: calc(8 * var(--padding)) calc(4 * var(--padding)) 0;
+}
+
+section:not(.portfolio) {
+  height: 100vh;
+  scroll-snap-align: center;
+}
+
+footer {
+  scroll-snap-align: end;
+}
+
 h1,
 h2 {
   font-family: var(--font-family-heading);
@@ -115,30 +128,9 @@ h2 {
   font-size: var(--font-size-h2);
 }
 
-section:not(.about) h2 {
-  display: none;
-}
-
 h3 {
   font-weight: var(--font-weight-medium);
   font-size: var(--font-size-h3);
-}
-
-section:not(.hero){
-  padding: calc(8 * var(--padding)) calc(4 * var(--padding)) 0;
-}
-
-.footer {
-   padding: calc(4 * var(--padding));
-}
-
-section:not(.portfolio) {
-  height: 100vh;
-  scroll-snap-align: center;
-}
-
-footer {
-  scroll-snap-align: end;
 }
 
 /* applies to both visited an unvisited link */
@@ -161,11 +153,6 @@ a:active {
   color: var(--color-accent);
 }
 
-button {
-  background-color: transparent;
-  border: none;
-}
-
 /* ______________________________________________________________________ *\
     $UTILITIES
 \* ______________________________________________________________________ */
@@ -186,6 +173,13 @@ button {
 .btn svg {
   height: 14px;
   width: 24px;
+}
+
+.container {
+  height: 100vh;
+  /* !DOES NOT WORK WITH SCROLLY FOR GO BACK TO TOP BTN */
+  overflow-y: scroll;
+  scroll-snap-type: y proximity;
 }
 
 .signature {
@@ -225,18 +219,10 @@ button {
   font-weight: var(--font-weight-bold);
 }
 
-.container {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y proximity;
-}
-
 /* ______________________________________________________________________ *\
     $HEADER
 \* ______________________________________________________________________ */
 header {
-  /* position: sticky; */
-  /* top: 0; */
   position: fixed;
   width: 100%;
   z-index: 99;
@@ -264,7 +250,6 @@ header {
   z-index: 2;
 }
 
-/* .nav--list, */
 .nav--signature {
   display: none;
 }
@@ -312,11 +297,9 @@ header {
 }
 
 .is-open.nav--list {
-  --color-secondary: hsla(0, 0%, 96%, 0.7);
-  background-color: var(--color-secondary);
+  background-color: hsla(0, 0%, 96%, 0.7);
   backdrop-filter: blur(20px);
 
-  /* animation */
   transform: translateX(0);
 }
 
@@ -334,10 +317,10 @@ header {
   grid-template-rows: auto 1fr;
   align-items: center;
 
-  background-image: url(./assets/img/desktop/hero-banner_2400x1800.jpg);
-  background-repeat: no-repeat;
+  /* shorthand notation for: background-color | background-image | background-repeat | background-position */
+  background: url("./assets/img/desktop/hero-banner_2400x1800.jpg") no-repeat
+    center;
   background-size: cover;
-  background-position: center;
   background-attachment: fixed;
 }
 
@@ -371,9 +354,9 @@ header {
 .about--picture {
   height: 250px;
   width: 250px;
+  object-fit: cover;
 
   border-radius: 100%;
-  object-fit: cover;
 }
 
 .about--description {
@@ -389,18 +372,16 @@ header {
 \* ______________________________________________________________________ */
 .portfolio {
   min-height: 100vh;
-
   scroll-snap-align: start;
-
 }
 
 section.portfolio {
+  /* ! Extra padding top to be removed if the scroll-snap feature is not implemented */
   padding-top: calc(12.5 * var(--padding));
   padding-bottom: calc(4 * var(--padding));
 }
 
 .mosaique {
-
   min-height: 100vh;
 
   display: flex;
@@ -413,10 +394,9 @@ section.portfolio {
 .mosaique img {
   max-width: 100%;
   height: auto;
-  /* à revoir entre mobile et desktop */
   border-radius: var(--border-radius);
-  /* border: var(--border-width) solid transparent; */
 }
+
 .popup-img {
   display: none;
 }
@@ -435,11 +415,12 @@ section.portfolio {
 .wrapper {
   height: 100%;
   width: 100%;
+
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, calc(50% - calc(0.5 * var(--gap))));
-  row-gap: var(--gap);
   column-gap: calc(2 * var(--gap));
+  row-gap: var(--gap);
 }
 
 .package--picture {
@@ -477,9 +458,9 @@ section.portfolio {
 }
 
 .package--description .decorate {
-  font-weight: var(--font-weight-bold);
   font-family: var(--font-family-heading);
   font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-bold);
 }
 
 /* ______________________________________________________________________ *\
@@ -500,15 +481,19 @@ section.portfolio {
 .contact--card {
   max-width: 240px;
   padding: calc(2 * var(--padding));
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   gap: var(--gap);
+
   background-color: var(--color-white);
   border-radius: var(--border-radius);
+
   color: var(--color-primary);
   text-align: center;
+
   transform: rotate(-10deg);
 }
 
@@ -531,6 +516,8 @@ section.portfolio {
     $FOOTER
 \* ______________________________________________________________________ */
 .footer {
+  padding: calc(4 * var(--padding));
+
   display: flex;
   flex-direction: column;
   gap: calc(2 * var(--gap));
@@ -559,9 +546,35 @@ section.portfolio {
 }
 
 /* ______________________________________________________________________ *\
-    $STATE
-    Reserved for JavaScript classes
+    $GO BACK TO TOP BUTTON
 \* ______________________________________________________________________ */
+.btnup {
+  display: none;
+
+  position: fixed;
+  right: calc(var(--padding) + 2px);
+  bottom: calc(var(--padding) + 2px);
+}
+
+.btnup.is-active {
+  display: block;
+  opacity: 0.5;
+}
+
+.btnup svg {
+  width: 58px;
+  height: 58px;
+}
+
+.btnup svg:hover path:nth-child(1),
+.btnup svg:active path:nth-child(1) {
+  fill: var(--color-secondary);
+}
+
+.btnup svg:hover path:nth-child(2),
+.btnup svg:active path:nth-child(2) {
+  fill: var(--color-primary);
+}
 
 /* ______________________________________________________________________ *\
     $THEME
@@ -603,17 +616,11 @@ section.portfolio {
     $MEDIA QUERIES (mobile first)
 \* ______________________________________________________________________ */
 @media screen and (min-width: 992px) {
-  /* ____________________________________________ *\
-    $GLOBALS
-  \* ____________________________________________ */
   :root {
     /* FONTS */
-    /* --font-size-body: 1.25rem; */
     --font-size-body: clamp(1rem, 2vw, 1.25rem);
-    /* --font-size-h1: 5rem; */
     --font-size-h1: clamp(2rem, 8vw, 5rem);
     --font-size-h2: 4rem;
-    /* --font-size-h3: 3rem; */
     --font-size-h3: clamp(2rem, 2.2vw, 3rem);
     --font-size-signature: 3rem;
     --font-size-body-small: 1rem;
@@ -635,20 +642,21 @@ section.portfolio {
     scroll-padding-top: calc(5.5 * var(--padding));
   }
 
-
-  section:not(.hero, .portfolio){
-
+  section:not(.hero) {
     padding: calc(10 * var(--padding));
   }
 
+  /* ! TO BE REMOVED */
+  /* section:not(.hero, .portfolio) {
+    padding: calc(10 * var(--padding));
+  } */
+
+  /* ! TO BE REMOVED */
   /* section:not(.hero){
     padding: calc(8 * var(--padding)) calc(4 * var(--padding)) 0;
   } */
-  
-  .footer {
-     padding: calc(10 * var(--padding));
-  }
-  
+
+  /* ! TO BE REMOVED */
   /* section:not(.portfolio) {
     height: 100vh;;
     scroll-snap-align: center;
@@ -761,18 +769,27 @@ section.portfolio {
   /* ____________________________________________ *\
     $PORTFOLIO
   \* ____________________________________________ */
+  /* ? Added more padding on top to make the whole section more centered on screen */
+  section.portfolio {
+    padding: calc(12.5 * var(--padding)) calc(10 * var(--padding))
+      calc(7.5 * var(--padding));
+  }
+
   .portfolio {
     height: 100vh;
-    display: flex;
 
+    display: flex;
     justify-content: center;
     align-items: center;
   }
+
   .mosaique {
     --mosaique-col: 4;
     --mosaique-row: 6;
+
     height: 100%;
     min-height: fit-content;
+
     display: grid;
     grid-template-columns: repeat(var(--mosaique-col), 1fr);
     grid-template-rows: repeat(
@@ -782,21 +799,20 @@ section.portfolio {
           calc(calc(var(--mosaique-row) - 1) / var(--mosaique-row) * var(--gap))
       )
     );
-
     gap: var(--gap);
   }
 
   .mosaique img {
     max-height: 100%;
-
     height: 100%;
     object-fit: cover;
+
     filter: grayscale(0);
     transition: filter 0.8s ease-in-out, transform 0.8s ease-in-out;
   }
 
   .mosaique img:hover {
-    cursor: url("assets/icon/cursor/camera.png"), auto;
+    cursor: url("./assets/icon/cursor/camera.png"), auto;
     filter: grayscale(1);
     transform: scale(1.05);
     transition: filter 0.8s ease-in-out, transform 0.8s ease-in-out;
@@ -856,64 +872,81 @@ section.portfolio {
   }
 
   .portfolio .popup-img {
+    display: none;
+
     position: fixed;
     top: 0;
     left: 0;
-    background-color: hsla(0, 0%, 8%, 0.93);
+
     height: 100%;
     width: 100%;
+    /* ? Added padding to let some room so the image can breathe */
+    padding-block: var(--padding);
+
+    background-color: hsla(0, 0%, 8%, 0.93);
+    /* ? Added blur to the background to enhance user experience */
+    backdrop-filter: blur(20px);
     z-index: 100;
-    display: none;
   }
 
   .portfolio .popup-on {
     display: block;
   }
 
-  .portfolio .popup-img img {
+  .portfolio .popup-on img {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+
+    /* ? previous code to be removed? */
+    /* width: 50vw;
+    height: 100%;
+    object-fit: contain; */
+    /* ? Added room so the image can breathe, and changed dimensions so the full image is displayed (no zoom in)*/
+    width: auto;
+    max-width: 75%;
+    height: auto;
+    max-height: 90%;
+
     border: 5px solid #fff;
     border-radius: 5px;
-    width: 50vw;
-    height: 100%;
-    object-fit: cover;
-  }
 
-  .portfolio .popup-on img {
     filter: grayscale(1);
     transition: filter 0.8s ease-in-out;
+    transform: translate(-50%, -50%);
   }
 
   .portfolio .popup-on img:hover {
+    cursor: url("./assets/icon/cursor/camera.png"), auto;
     filter: grayscale(0);
     transition: filter 0.8s ease-in-out;
-    cursor: url("./assets/icon/cursor/camera.png"), auto;
   }
 
   .popup-img button {
     position: absolute;
     top: 50%;
-    cursor: pointer;
-    border: none;
   }
+
   .portfolio .popup-on .leftButton {
     left: 5%;
   }
+
   .portfolio .popup-on .rightButton {
     right: 5%;
   }
+
   .sliderButton svg path:nth-child(1) {
     fill: var(--color-secondary);
   }
+
   .sliderButton svg path:nth-child(2) {
     fill: var(--color-accent);
   }
+
   .sliderButton:hover svg path:nth-child(1) {
     fill: var(--color-accent);
   }
+
   .sliderButton:hover svg path:nth-child(2) {
     fill: var(--color-secondary);
   }
@@ -1011,6 +1044,7 @@ section.portfolio {
     $FOOTER
   \* ____________________________________________ */
   .footer {
+    padding: calc(10 * var(--padding));
     gap: calc(4 * var(--gap));
   }
 
