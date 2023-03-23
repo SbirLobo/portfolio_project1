@@ -246,6 +246,8 @@ header {
   top: 0;
   left: 0;
 
+  visibility: hidden;
+
   width: 100%;
   min-height: 100vh;
   /* add extra top padding to account for the height of the fixed navbar */
@@ -284,9 +286,10 @@ header {
 }
 
 .is-open.nav--list {
+  visibility: visible;
+
   background-color: hsla(0, 0%, 96%, 0.7);
   backdrop-filter: blur(20px);
-
   transform: translateX(0);
 }
 
@@ -304,7 +307,6 @@ header {
   grid-template-rows: auto 1fr;
   align-items: center;
 
-  /* shorthand notation for: background-color | background-image | background-repeat | background-position */
   background: url("./assets/img/desktop/hero-banner_2400x1800.jpg") no-repeat
     center;
   background-size: cover;

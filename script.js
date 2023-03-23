@@ -15,9 +15,7 @@ let classRef = "";
 /* ____________________________________________ *\
     $MOBILE NAV MENU
 \* ____________________________________________ */
-// Add event listener on nav-mobile-btn
 navMenu.addEventListener("click", (event) => {
-  // On click, toggles the class is-open to display/hide the proper button
   navMenu.classList.toggle("is-open");
   navList.classList.toggle("is-open");
 });
@@ -26,8 +24,6 @@ navMenu.addEventListener("click", (event) => {
     $GO BACK TO TOP BUTTON
 \* ____________________________________________ */
 document.addEventListener("scroll", function () {
-  // !TO BE REMOVED
-  // console.log(window.scrollY);
   if (window.scrollY > threshold) {
     button.classList.add("is-active");
   } else {
