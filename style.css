@@ -15,6 +15,7 @@
   --font-size-h2: 1.5rem;
   --font-size-h3: 1.5rem;
   --font-size-body: clamp(0.875rem, 2vw, 1.125rem);
+  --font-size-links: 1rem;
   --font-size-body-small: 0.875rem;
   --font-size-signature: 2rem;
 
@@ -92,7 +93,7 @@ body {
   line-height: var(--font-line-height);
 }
 
-/* ? a title within each section is required to pass W3C html validator, but not desired for the layout */
+/* a title within each section is required to pass W3C html validator, but not desired for the layout */
 section:not(.about) h2 {
   display: none;
 }
@@ -263,6 +264,20 @@ header {
   /* animation (slide from left on open & close) */
   transform: translateX(-100%);
   transition: all 0.7s;
+}
+
+.nav--item {
+  font-size: var(--font-size-links);
+}
+
+/* trick to prevent layout shift when hovering nav-item links (needs to be combined with the title attribute in the HTML file */
+.nav--item a::before {
+  display: block;
+  content: attr(title);
+  font-weight: bold;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
 }
 
 .nav--mobile-btn {
@@ -601,12 +616,13 @@ header {
 @media screen and (min-width: 992px) {
   :root {
     /* FONTS */
-    --font-size-body: clamp(1rem, 2vw, 1.25rem);
     --font-size-h1: clamp(2rem, 8vw, 5rem);
     --font-size-h2: 4rem;
     --font-size-h3: clamp(2rem, 2.2vw, 3rem);
-    --font-size-signature: 3rem;
+    --font-size-body: clamp(1rem, 2vw, 1.25rem);
+    --font-size-links: 1.15rem;
     --font-size-body-small: 1rem;
+    --font-size-signature: 3rem;
 
     /* SPACING */
     --gap: 24px;
@@ -684,7 +700,7 @@ header {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: calc(2 * var(--padding));
+    gap: calc(1.5 * var(--padding));
 
     /* visibility: visible; */
 
