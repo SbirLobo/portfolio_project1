@@ -551,6 +551,7 @@ header {
 .btnup svg:hover path:nth-child(1),
 .btnup svg:active path:nth-child(1) {
   fill: var(--color-secondary);
+  stroke: var(--color-primary);
 }
 
 .btnup svg:hover path:nth-child(2),
