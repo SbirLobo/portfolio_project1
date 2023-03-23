@@ -246,7 +246,7 @@ header {
   top: 0;
   left: 0;
 
-  visibility: hidden;
+  /* visibility: hidden; */
 
   width: 100%;
   min-height: 100vh;
@@ -286,7 +286,7 @@ header {
 }
 
 .is-open.nav--list {
-  visibility: visible;
+  /* visibility: visible; */
 
   background-color: hsla(0, 0%, 96%, 0.7);
   backdrop-filter: blur(20px);
@@ -671,7 +671,7 @@ header {
     display: block;
   }
 
-  .nav .nav--list {
+  .nav--list {
     position: static;
 
     width: auto;
@@ -684,6 +684,8 @@ header {
     justify-content: center;
     align-items: center;
     gap: calc(2 * var(--padding));
+
+    /* visibility: visible; */
 
     transform: translateX(0);
     transition: none;
