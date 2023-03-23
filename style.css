@@ -97,18 +97,12 @@ section:not(.about) h2 {
   display: none;
 }
 
-/* !To be replaced by padding: calc(8 * var(--padding)) calc(4 * var(--padding)) IF scroll-snap feature is removed */
 section:not(.hero) {
-  padding: calc(8 * var(--padding)) calc(4 * var(--padding)) 0;
+  padding: calc(8 * var(--padding)) calc(4 * var(--padding));
 }
 
 section:not(.portfolio) {
   height: 100vh;
-  scroll-snap-align: center;
-}
-
-footer {
-  scroll-snap-align: end;
 }
 
 h1,
@@ -173,13 +167,6 @@ a:active {
 .btn svg {
   height: 14px;
   width: 24px;
-}
-
-.container {
-  height: 100vh;
-  /* !DOES NOT WORK WITH SCROLLY FOR GO BACK TO TOP BTN */
-  overflow-y: scroll;
-  scroll-snap-type: y proximity;
 }
 
 .signature {
@@ -372,13 +359,6 @@ header {
 \* ______________________________________________________________________ */
 .portfolio {
   min-height: 100vh;
-  scroll-snap-align: start;
-}
-
-section.portfolio {
-  /* ! Extra padding top to be removed if the scroll-snap feature is not implemented */
-  padding-top: calc(12.5 * var(--padding));
-  padding-bottom: calc(4 * var(--padding));
 }
 
 .mosaique {
@@ -646,22 +626,6 @@ section.portfolio {
     padding: calc(10 * var(--padding));
   }
 
-  /* ! TO BE REMOVED */
-  /* section:not(.hero, .portfolio) {
-    padding: calc(10 * var(--padding));
-  } */
-
-  /* ! TO BE REMOVED */
-  /* section:not(.hero){
-    padding: calc(8 * var(--padding)) calc(4 * var(--padding)) 0;
-  } */
-
-  /* ! TO BE REMOVED */
-  /* section:not(.portfolio) {
-    height: 100vh;;
-    scroll-snap-align: center;
-  } */
-
   /* ____________________________________________ *\
     $UTILITIES
   \* ____________________________________________ */
@@ -688,10 +652,6 @@ section.portfolio {
   .btn svg {
     height: 20px;
     width: 34px;
-  }
-
-  .container {
-    scroll-snap-type: y mandatory;
   }
 
   /* ____________________________________________ *\
@@ -769,12 +729,6 @@ section.portfolio {
   /* ____________________________________________ *\
     $PORTFOLIO
   \* ____________________________________________ */
-  /* ? Added more padding on top to make the whole section more centered on screen */
-  section.portfolio {
-    padding: calc(12.5 * var(--padding)) calc(10 * var(--padding))
-      calc(7.5 * var(--padding));
-  }
-
   .portfolio {
     height: 100vh;
 
@@ -883,8 +837,7 @@ section.portfolio {
     /* ? Added padding to let some room so the image can breathe */
     padding-block: var(--padding);
 
-    background-color: hsla(0, 0%, 8%, 0.93);
-    /* ? Added blur to the background to enhance user experience */
+    background-color: hsla(0, 0%, 8%, 0.8);
     backdrop-filter: blur(20px);
     z-index: 100;
   }
@@ -898,11 +851,6 @@ section.portfolio {
     top: 50%;
     left: 50%;
 
-    /* ? previous code to be removed? */
-    /* width: 50vw;
-    height: 100%;
-    object-fit: contain; */
-    /* ? Added room so the image can breathe, and changed dimensions so the full image is displayed (no zoom in)*/
     width: auto;
     max-width: 75%;
     height: auto;

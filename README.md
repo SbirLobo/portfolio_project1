@@ -14,9 +14,9 @@ Le portfolio d'Oliver Boyd se compose de plusieurs sections :
 
 **Contact:** cette section fournit les informations de contact d'Oliver Boyd pour ceux qui souhaitent le contacter pour des projets de photographie.
 
-## 🏠 Homepage
+## 🏠 Page d'Accueil
 
-Ce site est mis en ligne grâce à [GitHub Pages](https://pages.github.com/)
+xxx
 
 ## ⚙️ Technologies utilisées
 
@@ -24,10 +24,12 @@ Ce site est mis en ligne grâce à [GitHub Pages](https://pages.github.com/)
 - CSS
 - Vanilla JavaScript (ES6)
 
-## 👥 Team
+## 👥 L'Equipe
 
 - Chloé: https://github.com/Chl0l
 - Alexis: https://github.com/AlexisChesneau
 - Denis: https://github.com/ddZ6ii
 - Sébastien: https://github.com/SbirLobo
 - Youcef: https://github.com/YouceF-dz16
+
+Ce site est mis en ligne grâce à [GitHub Pages](https://pages.github.com/)
