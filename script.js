@@ -1,6 +1,10 @@
 const navList = document.getElementById("nav--list");
 const navMenu = document.querySelector(".nav--mobile-btn");
 
+const button = document.querySelector(".btnup");
+/* Treshold for scroll Y to make the "go back to top" button visible */
+const threshold = 493;
+
 const listPortfolio = document.querySelectorAll(".mosaique img");
 const popup = document.querySelector(".popup-img");
 const popupImage = document.querySelector(".popup-img img");
@@ -19,9 +23,21 @@ navMenu.addEventListener("click", (event) => {
 });
 
 /* ____________________________________________ *\
+    $GO BACK TO TOP BUTTON
+\* ____________________________________________ */
+document.addEventListener("scroll", function () {
+  // !TO BE REMOVED
+  // console.log(window.scrollY);
+  if (window.scrollY > threshold) {
+    button.classList.add("is-active");
+  } else {
+    button.classList.remove("is-active");
+  }
+});
+
+/* ____________________________________________ *\
     $PORFOLIO SLIDER (DESKTOP)
 \* ____________________________________________ */
-
 listPortfolio.forEach((img) => {
   img.onclick = () => {
     popupImage.src = img.getAttribute("src");
@@ -29,6 +45,7 @@ listPortfolio.forEach((img) => {
     classRef = img.className;
   };
 });
+
 rightBtn.forEach((tip) => {
   tip.onclick = () => {
     switch (classRef) {
@@ -73,6 +90,7 @@ rightBtn.forEach((tip) => {
     }
   };
 });
+
 leftBtn.forEach((tip) => {
   tip.onclick = () => {
     switch (classRef) {
@@ -117,6 +135,7 @@ leftBtn.forEach((tip) => {
     }
   };
 });
+
 popupImage.addEventListener("click", function () {
   popup.classList.remove("popup-on");
   classRef = "";
