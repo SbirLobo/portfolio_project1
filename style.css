@@ -907,19 +907,19 @@ header {
   }
 
   .sliderButton svg path:nth-child(1) {
-    fill: var(--color-secondary);
+    fill: var(--color-primary);
   }
 
   .sliderButton svg path:nth-child(2) {
-    fill: var(--color-accent);
+    fill: var(--color-secondary);
   }
 
   .sliderButton:hover svg path:nth-child(1) {
-    fill: var(--color-accent);
+    fill: var(--color-secondary);
   }
 
   .sliderButton:hover svg path:nth-child(2) {
-    fill: var(--color-secondary);
+    fill: var(--color-primary);
   }
 
   /* ____________________________________________ *\
