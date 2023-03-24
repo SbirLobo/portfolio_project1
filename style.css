@@ -3,18 +3,17 @@
 \* ______________________________________________________________________ */
 @font-face {
   font-family: "Abril Fatface";
-  src: url("./assets/fonts/AbrilFatface-Regular.ttf") format ("truetype");
+  src: url("./assets/fonts/AbrilFatface-Regular.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Montserrat";
-  src: url("./assets/fonts/Montserrat-VariableFont_wght.ttf") format
-    ("truetype");
+  src: url("./assets/fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Cherish";
-  src: url("./assets/fonts/Cherish-Regular.ttf") format ("truetype");
+  src: url("./assets/fonts/Cherish-Regular.ttf") format("truetype");
 }
 
 :root {
