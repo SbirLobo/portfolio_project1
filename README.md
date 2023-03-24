@@ -1,3 +1,5 @@
+![Oliver Boyd Photography Logo](https://user-images.githubusercontent.com/126237877/227157464-aadc6de2-d664-46e0-8670-333f8ed77460.svg)
+
 # Projet Portfolio Photographe
 
 Bienvenue dans le fichier README du portfolio d'Oliver Boyd, photographe professionnel. Ce portfolio a été créé pour présenter une sélection de ses meilleures œuvres et pour donner un aperçu de son travail.
@@ -14,16 +16,6 @@ Le portfolio d'Oliver Boyd se compose de plusieurs sections :
 
 **Contact:** cette section fournit les informations de contact d'Oliver Boyd pour ceux qui souhaitent le contacter pour des projets de photographie.
 
-## 🏠 Page d'Accueil
-
-xxx
-
-## ⚙️ Technologies utilisées
-
-- HTML 5
-- CSS
-- Vanilla JavaScript (ES6)
-
 ## 👥 L'Equipe
 
 - Chloé: https://github.com/Chl0l
@@ -32,4 +24,19 @@ xxx
 - Sébastien: https://github.com/SbirLobo
 - Youcef: https://github.com/YouceF-dz16
 
+## 🏠 Site Web
+
 Ce site est mis en ligne grâce à [GitHub Pages](https://pages.github.com/)
+
+![Website Screenshot](https://user-images.githubusercontent.com/105647308/227156817-ab2615b5-d1b6-4d1c-9364-9cc1b9d68bf6.png)
+
+## ⚙️ Technologies utilisées
+
+![HTML5 Logo](https://user-images.githubusercontent.com/126237877/227158293-e0de4fca-d6a5-41b4-a2c7-bc338890ce07.png)
+![CSS Logo](https://user-images.githubusercontent.com/126237877/227165498-fa421ac3-aaf8-40a8-a5f7-2f78c388c3eb.png)
+![JS Logo](https://user-images.githubusercontent.com/126237877/227165764-729bb036-bf69-4aed-9014-90ab9220901b.png)
+
+## ⚙️ Sources des images
+
+![Pexels Logo](https://user-images.githubusercontent.com/126237877/227443215-f718501a-adb7-4a8a-82ac-df9deef7204b.svg)
+![Unsplash Logo](https://user-images.githubusercontent.com/126237877/227443453-2b8b4f3f-e1c4-42ef-82cb-8f6755220897.svg)

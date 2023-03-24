@@ -11,10 +11,11 @@
   --font-family-body: "Montserrat", sans-serif;
   --font-family-signature: "Cherish", cursive;
 
-  --font-size-h1: clamp(2rem, 8vw, 5rem);
+  --font-size-h1: clamp(1.8rem, 8vw, 5rem);
   --font-size-h2: 1.5rem;
   --font-size-h3: 1.5rem;
   --font-size-body: clamp(0.875rem, 2vw, 1.125rem);
+  --font-size-links: 1rem;
   --font-size-body-small: 0.875rem;
   --font-size-signature: 2rem;
 
@@ -92,7 +93,7 @@ body {
   line-height: var(--font-line-height);
 }
 
-/* ? a title within each section is required to pass W3C html validator, but not desired for the layout */
+/* a title within each section is required to pass W3C html validator, but not desired for the layout */
 section:not(.about) h2 {
   display: none;
 }
@@ -115,7 +116,7 @@ h1 {
   color: var(--color-secondary);
   font-size: var(--font-size-h1);
   letter-spacing: var(--letter-spacing);
-  white-space: nowrap;
+  text-align: right;
 }
 
 h2 {
@@ -263,6 +264,22 @@ header {
   transition: all 0.7s;
 }
 
+.nav--item {
+  font-size: var(--font-size-links);
+  /* additional animation property to prevent undesired visible redisual transition when switching from desktop to mobile in the browser inspector */
+  visibility: hidden;
+}
+
+/* trick to prevent layout shift when hovering nav-item links (needs to be combined with the title attribute in the HTML file */
+.nav--item a::before {
+  content: attr(title);
+  display: block;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  font-weight: bold;
+}
+
 .nav--mobile-btn {
   cursor: pointer;
   outline: none;
@@ -286,8 +303,13 @@ header {
 .is-open.nav--list {
   background-color: hsla(0, 0%, 96%, 0.7);
   backdrop-filter: blur(20px);
-
   transform: translateX(0);
+
+  visibility: visible;
+}
+
+.is-open .nav--item {
+  visibility: visible;
 }
 
 /* ______________________________________________________________________ *\
@@ -304,7 +326,6 @@ header {
   grid-template-rows: auto 1fr;
   align-items: center;
 
-  /* shorthand notation for: background-color | background-image | background-repeat | background-position */
   background: url("./assets/img/desktop/hero-banner_2400x1800.jpg") no-repeat
     center;
   background-size: cover;
@@ -532,8 +553,10 @@ header {
   display: none;
 
   position: fixed;
-  right: calc(var(--padding) + 2px);
-  bottom: calc(var(--padding) + 2px);
+  bottom: 0;
+  right: 0;
+
+  transform: translate(-25%, -25%);
 }
 
 .btnup.is-active {
@@ -542,18 +565,8 @@ header {
 }
 
 .btnup svg {
-  width: 58px;
-  height: 58px;
-}
-
-.btnup svg:hover path:nth-child(1),
-.btnup svg:active path:nth-child(1) {
-  fill: var(--color-secondary);
-}
-
-.btnup svg:hover path:nth-child(2),
-.btnup svg:active path:nth-child(2) {
-  fill: var(--color-primary);
+  width: 40px;
+  height: 40px;
 }
 
 /* ______________________________________________________________________ *\
@@ -569,27 +582,9 @@ header {
   border: var(--border-width) solid var(--color-secondary);
 }
 
-.btn-secondary:hover {
-  background-color: var(--color-secondary);
-  color: var(--color-primary);
-}
-
-.btn-secondary:hover svg path {
-  fill: var(--color-primary);
-}
-
 .btn-accent {
   color: var(--color-accent);
   border: var(--border-width) solid var(--color-accent);
-}
-
-.btn-accent:hover {
-  background-color: var(--color-accent);
-  color: var(--color-secondary);
-}
-
-.btn-accent:hover svg path {
-  fill: var(--color-secondary);
 }
 
 /* ______________________________________________________________________ *\
@@ -598,12 +593,14 @@ header {
 @media screen and (min-width: 992px) {
   :root {
     /* FONTS */
-    --font-size-body: clamp(1rem, 2vw, 1.25rem);
     --font-size-h1: clamp(2rem, 8vw, 5rem);
+    --font-size-h1: clamp(2rem, 6vw, 5rem);
     --font-size-h2: 4rem;
     --font-size-h3: clamp(2rem, 2.2vw, 3rem);
-    --font-size-signature: 3rem;
+    --font-size-body: clamp(1rem, 2vw, 1.25rem);
+    --font-size-links: 1.15rem;
     --font-size-body-small: 1rem;
+    --font-size-signature: 3rem;
 
     /* SPACING */
     --gap: 24px;
@@ -669,7 +666,7 @@ header {
     display: block;
   }
 
-  .nav .nav--list {
+  .nav--list {
     position: static;
 
     width: auto;
@@ -681,7 +678,7 @@ header {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: calc(2 * var(--padding));
+    gap: calc(1.5 * var(--padding));
 
     transform: translateX(0);
     transition: none;
@@ -689,6 +686,7 @@ header {
 
   .nav--item {
     padding: var(--padding) calc(2 * var(--padding));
+    visibility: visible;
   }
 
   .nav--mobile-btn {
@@ -836,7 +834,6 @@ header {
 
     height: 100%;
     width: 100%;
-    /* ? Added padding to let some room so the image can breathe */
     padding-block: var(--padding);
 
     background-color: hsla(0, 0%, 8%, 0.8);
@@ -886,19 +883,19 @@ header {
   }
 
   .sliderButton svg path:nth-child(1) {
-    fill: var(--color-secondary);
+    fill: var(--color-primary);
   }
 
   .sliderButton svg path:nth-child(2) {
-    fill: var(--color-accent);
+    fill: var(--color-secondary);
   }
 
   .sliderButton:hover svg path:nth-child(1) {
-    fill: var(--color-accent);
+    fill: var(--color-secondary);
   }
 
   .sliderButton:hover svg path:nth-child(2) {
-    fill: var(--color-secondary);
+    fill: var(--color-primary);
   }
 
   /* ____________________________________________ *\
@@ -1018,5 +1015,49 @@ header {
   .footer--copyright {
     padding-block: calc(2 * var(--padding));
     padding-inline: calc(10 * var(--padding));
+  }
+
+  /* ______________________________________________________________________ *\
+    $GO BACK TO TOP BUTTON
+\* ______________________________________________________________________ */
+  .btnup {
+    transform: translate(-50%, -25%);
+  }
+
+  .btnup svg {
+    width: 56px;
+    height: 56px;
+  }
+
+  .btnup svg:hover path:nth-child(1),
+  .btnup svg:active path:nth-child(1) {
+    fill: var(--color-secondary);
+    stroke: var(--color-primary);
+  }
+
+  .btnup svg:hover path:nth-child(2),
+  .btnup svg:active path:nth-child(2) {
+    fill: var(--color-primary);
+  }
+
+  /* ______________________________________________________________________ *\
+    $THEME
+\* ______________________________________________________________________ */
+  .btn-secondary:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+  }
+
+  .btn-secondary:hover svg path {
+    fill: var(--color-primary);
+  }
+
+  .btn-accent:hover {
+    background-color: var(--color-accent);
+    color: var(--color-secondary);
+  }
+
+  .btn-accent:hover svg path {
+    fill: var(--color-secondary);
   }
 }

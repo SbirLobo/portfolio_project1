@@ -1,4 +1,5 @@
 const navList = document.getElementById("nav--list");
+const navListItems = document.querySelectorAll(".nav--item");
 const navMenu = document.querySelector(".nav--mobile-btn");
 
 const button = document.querySelector(".btnup");
@@ -15,19 +16,30 @@ let classRef = "";
 /* ____________________________________________ *\
     $MOBILE NAV MENU
 \* ____________________________________________ */
-// Add event listener on nav-mobile-btn
-navMenu.addEventListener("click", (event) => {
-  // On click, toggles the class is-open to display/hide the proper button
+const toggleNavMenu = function () {
   navMenu.classList.toggle("is-open");
   navList.classList.toggle("is-open");
+};
+
+navMenu.addEventListener("click", (event) => {
+  toggleNavMenu();
+});
+
+navListItems.forEach((item) => {
+  item.addEventListener("click", (event) => {
+    if (
+      navMenu.classList.contains("is-open") ||
+      navList.classList.contains("is-open")
+    ) {
+      toggleNavMenu();
+    }
+  });
 });
 
 /* ____________________________________________ *\
     $GO BACK TO TOP BUTTON
 \* ____________________________________________ */
 document.addEventListener("scroll", function () {
-  // !TO BE REMOVED
-  // console.log(window.scrollY);
   if (window.scrollY > threshold) {
     button.classList.add("is-active");
   } else {
@@ -44,6 +56,13 @@ listPortfolio.forEach((img) => {
     popup.classList.add("popup-on");
     classRef = img.className;
   };
+});
+
+// Close the slider (popup box) if the user press the ESCAPE key
+document.body.addEventListener("keyup", (event) => {
+  if (event.keyCode == 27 && popup.classList.contains("popup-on")) {
+    popup.classList.remove("popup-on");
+  }
 });
 
 rightBtn.forEach((tip) => {
