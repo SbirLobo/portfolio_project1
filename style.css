@@ -247,8 +247,6 @@ header {
   top: 0;
   left: 0;
 
-  /* visibility: hidden; */
-
   width: 100%;
   min-height: 100vh;
   /* add extra top padding to account for the height of the fixed navbar */
@@ -268,16 +266,18 @@ header {
 
 .nav--item {
   font-size: var(--font-size-links);
+  /* additional animation property to prevent undesired visible redisual transition when switching from desktop to mobile in the browser inspector */
+  visibility: hidden;
 }
 
 /* trick to prevent layout shift when hovering nav-item links (needs to be combined with the title attribute in the HTML file */
 .nav--item a::before {
-  display: block;
   content: attr(title);
-  font-weight: bold;
+  display: block;
   height: 0;
   overflow: hidden;
   visibility: hidden;
+  font-weight: bold;
 }
 
 .nav--mobile-btn {
@@ -301,11 +301,15 @@ header {
 }
 
 .is-open.nav--list {
-  /* visibility: visible; */
-
   background-color: hsla(0, 0%, 96%, 0.7);
   backdrop-filter: blur(20px);
   transform: translateX(0);
+
+  visibility: visible;
+}
+
+.is-open .nav--item {
+  visibility: visible;
 }
 
 /* ______________________________________________________________________ *\
@@ -702,14 +706,13 @@ header {
     align-items: center;
     gap: calc(1.5 * var(--padding));
 
-    /* visibility: visible; */
-
     transform: translateX(0);
     transition: none;
   }
 
   .nav--item {
     padding: var(--padding) calc(2 * var(--padding));
+    visibility: visible;
   }
 
   .nav--mobile-btn {
