@@ -1,6 +1,7 @@
 # Projet Portfolio Photographe
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
+[![Commit](https://img.shields.io/github/last-commit/ddZ6ii/project-portfolio)](https://github.com/ddZ6ii/project-portfolio)
 
 Bienvenue dans le fichier README du portfolio d'Oliver Boyd, photographe professionnel. Ce portfolio a été créé pour présenter une sélection de ses meilleures œuvres et pour donner un aperçu de son travail.
 
@@ -20,7 +21,8 @@ Le portfolio d'Oliver Boyd se compose de plusieurs sections :
 
 ---
 
-Ce site est mis en ligne grâce à [GitHub Pages](https://pages.github.com/)
+Ce site est mis en ligne grâce à [GitHub Pages](https://ddz6ii.github.io/project-portfolio/)
+
 
 ![Website Screenshot](https://user-images.githubusercontent.com/105647308/227156817-ab2615b5-d1b6-4d1c-9364-9cc1b9d68bf6.png)
 
