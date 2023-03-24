@@ -553,8 +553,10 @@ header {
   display: none;
 
   position: fixed;
-  right: calc(var(--padding) + 2px);
-  bottom: calc(var(--padding) + 2px);
+  bottom: 0;
+  right: 0;
+
+  transform: translate(-25%, -25%);
 }
 
 .btnup.is-active {
@@ -563,19 +565,8 @@ header {
 }
 
 .btnup svg {
-  width: 58px;
-  height: 58px;
-}
-
-.btnup svg:hover path:nth-child(1),
-.btnup svg:active path:nth-child(1) {
-  fill: var(--color-secondary);
-  stroke: var(--color-primary);
-}
-
-.btnup svg:hover path:nth-child(2),
-.btnup svg:active path:nth-child(2) {
-  fill: var(--color-primary);
+  width: 40px;
+  height: 40px;
 }
 
 /* ______________________________________________________________________ *\
@@ -591,27 +582,9 @@ header {
   border: var(--border-width) solid var(--color-secondary);
 }
 
-.btn-secondary:hover {
-  background-color: var(--color-secondary);
-  color: var(--color-primary);
-}
-
-.btn-secondary:hover svg path {
-  fill: var(--color-primary);
-}
-
 .btn-accent {
   color: var(--color-accent);
   border: var(--border-width) solid var(--color-accent);
-}
-
-.btn-accent:hover {
-  background-color: var(--color-accent);
-  color: var(--color-secondary);
-}
-
-.btn-accent:hover svg path {
-  fill: var(--color-secondary);
 }
 
 /* ______________________________________________________________________ *\
@@ -861,7 +834,6 @@ header {
 
     height: 100%;
     width: 100%;
-    /* ? Added padding to let some room so the image can breathe */
     padding-block: var(--padding);
 
     background-color: hsla(0, 0%, 8%, 0.8);
@@ -1043,5 +1015,49 @@ header {
   .footer--copyright {
     padding-block: calc(2 * var(--padding));
     padding-inline: calc(10 * var(--padding));
+  }
+
+  /* ______________________________________________________________________ *\
+    $GO BACK TO TOP BUTTON
+\* ______________________________________________________________________ */
+  .btnup {
+    transform: translate(-50%, -25%);
+  }
+
+  .btnup svg {
+    width: 56px;
+    height: 56px;
+  }
+
+  .btnup svg:hover path:nth-child(1),
+  .btnup svg:active path:nth-child(1) {
+    fill: var(--color-secondary);
+    stroke: var(--color-primary);
+  }
+
+  .btnup svg:hover path:nth-child(2),
+  .btnup svg:active path:nth-child(2) {
+    fill: var(--color-primary);
+  }
+
+  /* ______________________________________________________________________ *\
+    $THEME
+\* ______________________________________________________________________ */
+  .btn-secondary:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+  }
+
+  .btn-secondary:hover svg path {
+    fill: var(--color-primary);
+  }
+
+  .btn-accent:hover {
+    background-color: var(--color-accent);
+    color: var(--color-secondary);
+  }
+
+  .btn-accent:hover svg path {
+    fill: var(--color-secondary);
   }
 }
