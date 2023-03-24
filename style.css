@@ -1,9 +1,21 @@
 /* ______________________________________________________________________ *\
     $GLOBAL
 \* ______________________________________________________________________ */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cherish&display=swap");
+@font-face {
+  font-family: "Abril Fatface";
+  src: url("./assets/fonts/AbrilFatface-Regular.ttf") format ("truetype");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("./assets/fonts/Montserrat-VariableFont_wght.ttf") format
+    ("truetype");
+}
+
+@font-face {
+  font-family: "Cherish";
+  src: url("./assets/fonts/Cherish-Regular.ttf") format ("truetype");
+}
 
 :root {
   /* FONTS */
@@ -434,7 +446,7 @@ header {
   height: auto;
   max-width: 100%;
   object-fit: cover;
-  aspect-ratio: 1;
+  aspect-ratio: 1 / 1;
 
   border-radius: 100%;
 }
@@ -606,9 +618,9 @@ header {
     --gap: 24px;
     --margin: 160px;
     --padding: 16px;
-    --gap25: calc(25%- (calc(var(--gap) / 6)));
-    --gap8: calc(8%- (calc(var(--gap) / 6)));
-    --gap17: calc(17%- (calc(var(--gap) / 6)));
+    --gap25: calc(25% - (calc(var(--gap) / 6)));
+    --gap8: calc(8% - (calc(var(--gap) / 6)));
+    --gap17: calc(17% - (calc(var(--gap) / 6)));
   }
 
   /* ____________________________________________ *\
