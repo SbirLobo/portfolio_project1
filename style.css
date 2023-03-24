@@ -11,7 +11,7 @@
   --font-family-body: "Montserrat", sans-serif;
   --font-family-signature: "Cherish", cursive;
 
-  --font-size-h1: clamp(2rem, 8vw, 5rem);
+  --font-size-h1: clamp(1.8rem, 8vw, 5rem);
   --font-size-h2: 1.5rem;
   --font-size-h3: 1.5rem;
   --font-size-body: clamp(0.875rem, 2vw, 1.125rem);
@@ -116,7 +116,7 @@ h1 {
   color: var(--color-secondary);
   font-size: var(--font-size-h1);
   letter-spacing: var(--letter-spacing);
-  white-space: nowrap;
+  text-align: right;
 }
 
 h2 {
@@ -621,6 +621,7 @@ header {
   :root {
     /* FONTS */
     --font-size-h1: clamp(2rem, 8vw, 5rem);
+    --font-size-h1: clamp(2rem, 6vw, 5rem);
     --font-size-h2: 4rem;
     --font-size-h3: clamp(2rem, 2.2vw, 3rem);
     --font-size-body: clamp(1rem, 2vw, 1.25rem);
